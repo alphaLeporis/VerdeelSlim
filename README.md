@@ -1,0 +1,2 @@
+# VerdeelSlim
+Java SplitWise clone
