@@ -7,6 +7,6 @@ public abstract class Database
 {
     public Database() {}
 
-    //void addListeners(PropertyChangeListener observer);
+    abstract void addListeners(PropertyChangeListener observer);
 
 }

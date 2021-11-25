@@ -5,5 +5,7 @@ import java.beans.PropertyChangeListener;
 
 public interface Controller
 {
-    void addListeners(PropertyChangeListener observer);
+    public void createEntry();
+    public void removeEntry();
+    public void modifyEntry();
 }

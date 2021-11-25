@@ -1,6 +1,7 @@
 package databases.controllers;
 
 import database.Database;
+import databases.Database;
 import employee.Employee;
 import javafx.util.Pair;
 import register_entry.RegisterEntry;
@@ -18,25 +19,4 @@ public class PersonsController implements Controller
         this.db = db;
     }
 
-    @Override
-    public void checkIn(Employee e)
-    {
-        RegisterEntry entry = new RegisterEntry(true);
-        db.addEntry(e, entry);
-        pcs.firePropertyChange("checkIn", null, new Pair<RegisterEntry,String> (entry, e.getName()));
-    }
-
-    @Override
-    public void checkOut(Employee e)
-    {
-        RegisterEntry entry = new RegisterEntry(false);
-        db.addEntry(e, entry);
-        pcs.firePropertyChange("checkOut", null, new Pair<RegisterEntry,String> (entry, e.getName()));
-    }
-
-
-    @Override
-    public void addListeners(PropertyChangeListener observer) {
-        pcs.addPropertyChangeListener(observer);
-    }
 }
