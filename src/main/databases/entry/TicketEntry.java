@@ -6,7 +6,7 @@ public abstract class TicketEntry extends DatabaseEntry {
     protected PersonEntry paidBy;
 
     public TicketEntry(String ticketType, double price, PersonEntry paidBy) {
-        super(price)
+        super();
         this.ticketType = ticketType;
         this.paidBy = paidBy;
     }

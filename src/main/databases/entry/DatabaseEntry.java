@@ -6,4 +6,8 @@ public abstract class DatabaseEntry {
     public DatabaseEntry(String name) {
         this.name = name;
     }
+
+    public DatabaseEntry() {
+
+    }
 }

@@ -1,4 +1,4 @@
-
+import gui.Display;
 
 public class Main
 {
@@ -11,6 +11,7 @@ public class Main
     public Main()
     {
         System.out.println("Louis stinkt");
+        Display display = new Display();
     }
 
     public void run()
