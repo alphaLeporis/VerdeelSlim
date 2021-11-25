@@ -1,14 +1,28 @@
 package databases.entry;
 
+import databases.PersonsDatabase;
+
 public abstract class TicketEntry extends DatabaseEntry {
     private String ticketType;
-    protected double price;
-    protected PersonEntry paidBy;
+    private double price;
+    private PersonEntry paidBy;
+    private TicketSplitMap ticketSplitMap;
+    private PersonsDatabase personsDatabase;
 
-    public TicketEntry(String ticketType, double price, PersonEntry paidBy) {
-        super();
+    public TicketEntry(String name, String ticketType, double price, PersonEntry paidBy) {
+        super(name);
         this.ticketType = ticketType;
         this.paidBy = paidBy;
+        this.ticketSplitMap = new TicketSplitMap();
+        this.personsDatabase = PersonsDatabase.getInstance();
+        this.price = price;
+        this.initializeMap();
+    }
+
+    public void initializeMap(){
+        for (String entry: this.personsDatabase.getDb().keySet()){
+                this.ticketSplitMap.addName(entry, price/this.personsDatabase.getDb().size());
+        }
     }
 
     public double getPrice() {
