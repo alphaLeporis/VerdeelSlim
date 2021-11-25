@@ -1,10 +1,8 @@
 package databases.controllers;
 
-import database.Database;
 import databases.Database;
-import employee.Employee;
-import javafx.util.Pair;
-import register_entry.RegisterEntry;
+import databases.entry.DatabaseEntry;
+
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -19,4 +17,18 @@ public class PersonsController implements Controller
         this.db = db;
     }
 
+    @Override
+    public void createEntry(DatabaseEntry entry) {
+
+    }
+
+    @Override
+    public void removeEntry(DatabaseEntry entry) {
+
+    }
+
+    @Override
+    public void modifyEntry(DatabaseEntry entry) {
+
+    }
 }
