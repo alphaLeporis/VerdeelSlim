@@ -10,7 +10,7 @@ public class Main
 
     public Main()
     {
-
+        System.out.println("Louis stinkt");
     }
 
     public void run()
