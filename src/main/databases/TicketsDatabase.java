@@ -40,6 +40,11 @@ public class TicketsDatabase extends Database {
     }
 
     @Override
+    public Database getDB() {
+        return null;
+    }
+
+    @Override
     void addListeners(PropertyChangeListener observer) {
 
     }
