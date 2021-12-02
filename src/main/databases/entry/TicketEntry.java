@@ -21,7 +21,7 @@ public abstract class TicketEntry extends DatabaseEntry {
 
     public void initializeMap(){
         for (String entry: this.personsDatabase.getDb().keySet()){
-                this.ticketSplitMap.addName(entry, price/this.personsDatabase.getDb().size());
+                this.ticketSplitMap.addName(entry, this.price/this.personsDatabase.getDb().size());
         }
     }
 

@@ -5,7 +5,7 @@ import databases.entry.TicketEntry;
 
 public class RestaurantTicket extends TicketEntry {
 
-    public RestaurantTicket(String name, String ticketType, double price, PersonEntry paidBy) {
-        super(name, ticketType, price, paidBy);
+    public RestaurantTicket(String name, double price, PersonEntry paidBy) {
+        super(name, "Restaurant", price, paidBy);
     }
 }
