@@ -1,29 +1,19 @@
 package gui;
 
 import javax.swing.*;
-import java.awt.*;
 
-public class Display extends JPanel {
+public class Display {
     private JFrame frame;
 
     public Display() {
-        newDisplay();
-        setStartFrame();
-    }
+        Interface GUI = new Interface();
+        GUI.init(); // init all our things!
 
-    private void newDisplay() {
-        frame = new JFrame();
-        GridLayout grid = new GridLayout(0,1);
-        frame.setLayout(grid);//using no layout managers
-        frame.setSize(400,500);//400 width and 500 height
-        frame.setVisible(true);//making the frame visible
-    }
-
-    private void setStartFrame() {
-        frame.add(new JButton("Friends"));
-        frame.add(new JButton("Tickets"));
-        frame.add(new JButton("Balance"));
-        frame.setVisible(true);//making the frame visible
+        // set window object size
+        GUI.setSize(800, 450);
+        GUI.setTitle("VerdeelSlim");
+        GUI.setVisible(true);
+        GUI.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
 }

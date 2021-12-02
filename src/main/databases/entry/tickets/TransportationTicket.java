@@ -4,7 +4,7 @@ import databases.entry.PersonEntry;
 import databases.entry.TicketEntry;
 
 public class TransportationTicket extends TicketEntry {
-    public TransportationTicket(String ticketType, double price, PersonEntry paidBy) {
-        super(ticketType, price, paidBy);
+    public TransportationTicket(String name, String ticketType, double price, PersonEntry paidBy) {
+        super(name, ticketType, price, paidBy);
     }
 }
