@@ -36,7 +36,11 @@ public class Main
         PersonEntry person1 = new PersonEntry("Bob");
         PersonEntry person2 = new PersonEntry("Karl");
 
+        personsController.createEntry(person1);
+        personsController.createEntry(person2);
+
 
         TicketEntry ticket1 = ticketFactory.getTicket("Pretpark", "Amusement", 100.4, person1);
+        ticketsController.createEntry(ticket1);
     }
 }
