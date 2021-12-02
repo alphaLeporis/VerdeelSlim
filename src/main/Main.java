@@ -13,13 +13,12 @@ public class Main
     public static void main(String[] args)
     {
         Main main = new Main();
-        main.run();
     }
 
     public Main()
     {
         System.out.println("VerdeelSlim is starting...");
-
+        run();
 
 
         Display display = new Display();
