@@ -1,5 +1,6 @@
 package gui.components;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class userLayout {
@@ -9,6 +10,6 @@ public class userLayout {
     }
 
     public Component draw() {
-        return new Button(name);
+        return new JLabel(name);
     }
 }
