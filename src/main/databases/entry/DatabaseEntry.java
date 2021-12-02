@@ -8,6 +8,5 @@ public abstract class DatabaseEntry {
     }
 
     public DatabaseEntry() {
-
     }
 }
