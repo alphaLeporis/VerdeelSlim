@@ -3,9 +3,10 @@ package databases;
 import databases.entry.PersonEntry;
 import databases.entry.TicketEntry;
 
+import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 
-public class TicketsDatabase {
+public class TicketsDatabase extends Database {
 
     private static TicketsDatabase instance;
     static {
@@ -20,5 +21,14 @@ public class TicketsDatabase {
 
     public TicketsDatabase() {
         this.db = new HashMap<>();
+    }
+
+    public HashMap<String, TicketEntry> getDb() {
+        return db;
+    }
+
+    @Override
+    void addListeners(PropertyChangeListener observer) {
+
     }
 }

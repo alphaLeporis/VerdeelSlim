@@ -1,5 +1,6 @@
 package databases;
 
+import databases.entry.DatabaseEntry;
 import databases.entry.PersonEntry;
 
 import java.beans.PropertyChangeListener;
@@ -25,6 +26,7 @@ public class PersonsDatabase extends Database {
     public PersonsDatabase() {
         this.db = new HashMap<>();
     }
+
 
     @Override
     void addListeners(PropertyChangeListener observer) {

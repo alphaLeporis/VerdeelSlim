@@ -1,6 +1,8 @@
 package gui;
+import gui.states.AddUserState;
 import gui.states.StartState;
 import gui.states.State;
+import gui.states.UserState;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,13 +21,16 @@ public class Interface extends JFrame implements ActionListener {
 
     public void init() {
         Container pane = this.getContentPane();
-        State currentState = new StartState(pane);
+        State currentState = new UserState(pane);
         currentState.init();
     }
 
 
 
-    //handles action and all the things ^_^
+
+    protected void changeState(State newState) {
+
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {

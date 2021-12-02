@@ -11,6 +11,9 @@ public class Main
     public Main()
     {
         System.out.println("VerdeelSlim is starting...");
+
+
+
         Display display = new Display();
     }
 
