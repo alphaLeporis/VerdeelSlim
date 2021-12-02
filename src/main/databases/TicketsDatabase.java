@@ -1,5 +1,6 @@
 package databases;
 
+import databases.entry.DatabaseEntry;
 import databases.entry.PersonEntry;
 import databases.entry.TicketEntry;
 
@@ -23,8 +24,19 @@ public class TicketsDatabase extends Database {
         this.db = new HashMap<>();
     }
 
-    public HashMap<String, TicketEntry> getDb() {
-        return db;
+    @Override
+    public void addEntry(DatabaseEntry entry) {
+        this.db.put(entry.getName(), (TicketEntry) entry);
+    }
+
+    @Override
+    public void removeEntry(DatabaseEntry entry) {
+        this.db.remove(entry.getName());
+    }
+
+    @Override
+    public DatabaseEntry getEntry(String name) {
+        return this.db.get(name);
     }
 
     @Override

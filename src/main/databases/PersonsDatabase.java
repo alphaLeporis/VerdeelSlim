@@ -19,17 +19,32 @@ public class PersonsDatabase extends Database {
 
     private final HashMap<String, PersonEntry> db;
 
-    public HashMap<String, PersonEntry> getDb() {
-        return db;
-    }
-
     public PersonsDatabase() {
         this.db = new HashMap<>();
     }
 
 
     @Override
+    public void addEntry(DatabaseEntry entry) {
+        this.db.put(entry.getName(), (PersonEntry) entry);
+    }
+
+    @Override
+    public void removeEntry(DatabaseEntry entry) {
+        this.db.remove(entry.getName());
+    }
+
+    @Override
+    public DatabaseEntry getEntry(String name) {
+        return this.db.get(name);
+    }
+
+    @Override
     void addListeners(PropertyChangeListener observer) {
 
+    }
+
+    public HashMap<String, PersonEntry> getDb() {
+        return db;
     }
 }

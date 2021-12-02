@@ -5,6 +5,7 @@ import databases.entry.DatabaseEntry;
 import databases.entry.PersonEntry;
 
 import java.util.HashMap;
+import databases.entry.TicketEntry;
 
 public class TicketsController implements Controller{
 
@@ -17,12 +18,12 @@ public class TicketsController implements Controller{
 
     @Override
     public void createEntry(DatabaseEntry entry) {
-
+        this.db.addEntry(entry);
     }
 
     @Override
     public void removeEntry(DatabaseEntry entry) {
-
+        this.db.removeEntry(entry);
     }
 
     @Override

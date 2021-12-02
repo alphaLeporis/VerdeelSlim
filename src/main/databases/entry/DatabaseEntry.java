@@ -7,6 +7,10 @@ public abstract class DatabaseEntry {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public DatabaseEntry() {
     }
 }
