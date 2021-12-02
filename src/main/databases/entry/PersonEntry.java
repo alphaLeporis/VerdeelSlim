@@ -25,4 +25,12 @@ public class PersonEntry extends DatabaseEntry {
     public void setAmountBorrowed(double amountBorrowed) {
         this.amountBorrowed = amountBorrowed;
     }
+
+    public void addAmountPaid(double amountPaid){
+        this.amountPaid += amountPaid;
+    }
+
+    public void addAmountBorrowed(double amountBorrowed){
+        this.amountBorrowed += amountBorrowed;
+    }
 }

@@ -20,8 +20,8 @@ public abstract class TicketEntry extends DatabaseEntry {
     }
 
     public void initializeMap(){
-        for (String entry: this.personsDatabase.getDb().keySet()){
-                this.ticketSplitMap.addName(entry, this.price/this.personsDatabase.getDb().size());
+        for (String entry: this.personsDatabase.getDB().keySet()){
+                this.ticketSplitMap.addName(entry, this.price/this.personsDatabase.getDB().size());
         }
     }
 
@@ -39,5 +39,13 @@ public abstract class TicketEntry extends DatabaseEntry {
 
     public void setPaidBy(PersonEntry paidBy) {
         this.paidBy = paidBy;
+    }
+
+    public TicketSplitMap getTicketSplitMap() {
+        return ticketSplitMap;
+    }
+
+    public void setTicketSplitMap(TicketSplitMap ticketSplitMap) {
+        this.ticketSplitMap = ticketSplitMap;
     }
 }
