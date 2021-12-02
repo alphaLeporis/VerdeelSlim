@@ -46,6 +46,5 @@ public class PersonsDatabase extends Database {
 
     @Override
     void addListeners(PropertyChangeListener observer) {
-
     }
 }

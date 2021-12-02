@@ -34,6 +34,6 @@ public class PersonsController implements Controller
 
     @Override
     public HashMap<String, PersonEntry> getAllEntries() {
-        return db.getDb();
+        return db.getDB();
     }
 }
