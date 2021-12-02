@@ -13,6 +13,8 @@ public abstract class Database
     public abstract void removeEntry(DatabaseEntry entry);
     public abstract DatabaseEntry getEntry(String name);
 
+    public abstract Database getDB();
+
     abstract void addListeners(PropertyChangeListener observer);
 
 }

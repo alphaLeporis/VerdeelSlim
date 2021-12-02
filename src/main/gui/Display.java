@@ -8,6 +8,7 @@ public class Display {
     public Display() {
         Interface GUI = new Interface();
         GUI.init(); // init all our things!
+        System.out.println("VerdeelSlim GUI is starting...");
 
         // set window object size
         GUI.setSize(800, 450);
