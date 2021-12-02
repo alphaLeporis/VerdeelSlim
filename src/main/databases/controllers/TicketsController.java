@@ -2,6 +2,9 @@ package databases.controllers;
 
 import databases.Database;
 import databases.entry.DatabaseEntry;
+import databases.entry.PersonEntry;
+
+import java.util.HashMap;
 
 public class TicketsController implements Controller{
 
@@ -25,5 +28,11 @@ public class TicketsController implements Controller{
     @Override
     public void modifyEntry(DatabaseEntry entry) {
 
+    }
+
+    @Override
+    public HashMap<String, PersonEntry> getAllEntries() {
+
+        return null;
     }
 }

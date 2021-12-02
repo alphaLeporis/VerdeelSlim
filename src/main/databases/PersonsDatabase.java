@@ -2,9 +2,10 @@ package databases;
 
 import databases.entry.PersonEntry;
 
+import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 
-public class PersonsDatabase {
+public class PersonsDatabase extends Database {
 
     private static PersonsDatabase instance;
     static {
@@ -17,11 +18,16 @@ public class PersonsDatabase {
 
     private final HashMap<String, PersonEntry> db;
 
+    public HashMap<String, PersonEntry> getDb() {
+        return db;
+    }
+
     public PersonsDatabase() {
         this.db = new HashMap<>();
     }
 
-    public HashMap<String, PersonEntry> getDb() {
-        return db;
+    @Override
+    void addListeners(PropertyChangeListener observer) {
+
     }
 }
