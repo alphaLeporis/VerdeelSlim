@@ -1,11 +1,13 @@
 package databases;
 
+import databases.entry.DatabaseEntry;
 import databases.entry.PersonEntry;
 import databases.entry.TicketEntry;
 
+import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 
-public class TicketsDatabase {
+public class TicketsDatabase extends Database {
 
     private static TicketsDatabase instance;
     static {
@@ -20,5 +22,25 @@ public class TicketsDatabase {
 
     public TicketsDatabase() {
         this.db = new HashMap<>();
+    }
+
+    @Override
+    public void addEntry(DatabaseEntry entry) {
+        this.db.put(entry.getName(), (TicketEntry) entry);
+    }
+
+    @Override
+    public void removeEntry(DatabaseEntry entry) {
+        this.db.remove(entry.getName());
+    }
+
+    @Override
+    public DatabaseEntry getEntry(String name) {
+        return this.db.get(name);
+    }
+
+    @Override
+    void addListeners(PropertyChangeListener observer) {
+
     }
 }
