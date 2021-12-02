@@ -40,8 +40,8 @@ public class TicketsDatabase extends Database {
     }
 
     @Override
-    public Database getDB() {
-        return null;
+    public HashMap<String, TicketEntry> getDB() {
+        return this.db;
     }
 
     @Override

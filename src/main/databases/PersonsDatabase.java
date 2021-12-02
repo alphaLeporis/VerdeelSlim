@@ -40,16 +40,12 @@ public class PersonsDatabase extends Database {
     }
 
     @Override
-    public Database getDB() {
-        return null;
+    public HashMap<String, PersonEntry> getDB() {
+        return this.db;
     }
 
     @Override
     void addListeners(PropertyChangeListener observer) {
 
-    }
-
-    public HashMap<String, PersonEntry> getDb() {
-        return db;
     }
 }
