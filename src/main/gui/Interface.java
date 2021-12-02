@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Interface extends JFrame implements ActionListener {
+public class Interface extends JFrame {
 
     // declare some things we need
     private JLabel introLbl, lbl1, lbl2, lbl3;
@@ -17,39 +17,22 @@ public class Interface extends JFrame implements ActionListener {
     private JButton btn1;
     private JTextArea txtArea1;
     private Container pane;
+    private State currentState;
 
 
     public void init() {
-        Container pane = this.getContentPane();
-        State currentState = new UserState(pane);
+        pane = this.getContentPane();
+        currentState = new StartState(this);
         currentState.init();
     }
 
-
-
-
-    protected void changeState(State newState) {
-
+    public void changeState(State newState) {
+        pane.removeAll();
+        currentState = newState;
+        currentState.init();
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        try {
-            //parse some data from input
-            int temp1 = Integer.parseInt(txtfld1.getText());
-            int temp2 = Integer.parseInt(txtfld2.getText());
-
-            //do what we want to do with whatever data
-
-
-            //basic error catching
-        } catch (NumberFormatException ex) {
-            System.out.println("Exception: " + ex);
-            JOptionPane.showMessageDialog(this, "Please enter a warning message");
-        } catch (ArrayIndexOutOfBoundsException ex) {
-            //warnings..
-        } catch (NegativeArraySizeException ex) {
-            //warnings..
-        }
+    public Container getPane() {
+        return pane;
     }
 }
