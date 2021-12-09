@@ -9,6 +9,10 @@ import databases.entry.TicketEntry;
 import databases.entry.tickets.TicketFactory;
 import gui.Display;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Main
 {
     public static void main(String[] args)
@@ -49,5 +53,11 @@ public class Main
 
         BillCalculator billCalculator = new BillCalculator();
         billCalculator.calculateBill();
+        HashMap<String, ArrayList<Map.Entry<String, Double>>> debts =billCalculator.getDebtsList();
+        for(Map.Entry<String, ArrayList<Map.Entry<String, Double>>> entry: debts.entrySet()){
+            for(Map.Entry<String, Double> set: entry.getValue()){
+                System.out.println(entry.getKey() + " gets/gives  to  " + set.getKey() + " amount: " + set.getValue());
+            }
+        }
     }
 }
