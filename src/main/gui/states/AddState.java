@@ -33,7 +33,7 @@ public class AddState extends State{
         betaaldBoxText.setEditable(false);
         ticketBoxText.setText("Wat voor een ticket was het?");
         ticketBoxText.setEditable(false);
-        prijsText.setText("Hoeveel koste dit ticket?");
+        prijsText.setText("Hoeveel kostte dit ticket?");
         prijsText.setEditable(false);
         prijsTextInput.setEditable(true);
 
