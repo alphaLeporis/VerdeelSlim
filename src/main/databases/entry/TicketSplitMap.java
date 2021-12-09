@@ -1,6 +1,12 @@
 package databases.entry;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
+
+import static java.lang.Math.random;
+import static java.lang.Math.round;
 
 public class TicketSplitMap {
     private boolean isPercentage;
@@ -29,5 +35,20 @@ public class TicketSplitMap {
 
     public void addName(String name, double value){
         this.splitMap.put(name, value);
+    }
+
+    public double sum(){
+        double sum = 0;
+        for(Double amount: this.splitMap.values()){
+            sum += amount;
+        }
+        return sum;
+    }
+
+    public void addCorrection(double correction){
+        Set<String> keys = this.splitMap.keySet();
+        ArrayList<String> keyArr = new ArrayList<>(keys);
+        int randIndex = (int)(random() * (keys.size()));
+        this.splitMap.put(keyArr.get(randIndex), round((this.splitMap.get(keyArr.get(randIndex))+correction)*100.0)/100.0);
     }
 }

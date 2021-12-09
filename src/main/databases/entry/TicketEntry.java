@@ -2,6 +2,8 @@ package databases.entry;
 
 import databases.PersonsDatabase;
 
+import static java.lang.Math.*;
+
 public abstract class TicketEntry extends DatabaseEntry {
     private String ticketType;
     private double price;
@@ -21,7 +23,11 @@ public abstract class TicketEntry extends DatabaseEntry {
 
     public void initializeMap(){
         for (String entry: this.personsDatabase.getDB().keySet()){
-                this.ticketSplitMap.addName(entry, this.price/this.personsDatabase.getDB().size());
+                this.ticketSplitMap.addName(entry, round((this.price/this.personsDatabase.getDB().size())*100.0)/100.0);
+        }
+        double sum = this.ticketSplitMap.sum();
+        if(abs(sum-this.price) > 0.00001){
+            this.ticketSplitMap.addCorrection(round((this.price-sum)*100.0)/100.0);
         }
     }
 
