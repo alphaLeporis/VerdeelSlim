@@ -2,8 +2,14 @@ package gui.states;
 
 import gui.Interface;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.Objects;
 
 public class StartState extends State {
     private final Container pane;
@@ -21,6 +27,17 @@ public class StartState extends State {
 
     public void init() {
         pane.setLayout(new GridLayout(0, 1));
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(Objects.requireNonNull(StartState.class.getResource("/logo.png")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        JLabel pic = new JLabel(new ImageIcon(img));
+        pane.add(pic);
+
+
+
         lookUsers = new Button("Bekijk gebruikers 👥");
         addTicket = new Button("Voeg een ticket toe 🎟");
         calculate = new Button("Bereken 🧾");
