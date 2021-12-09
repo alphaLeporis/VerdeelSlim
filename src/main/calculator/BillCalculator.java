@@ -1,5 +1,7 @@
-package databases;
+package calculator;
 
+import databases.PersonsDatabase;
+import databases.TicketsDatabase;
 import databases.entry.PersonEntry;
 import databases.entry.PersonEntryComparator;
 import databases.entry.TicketEntry;

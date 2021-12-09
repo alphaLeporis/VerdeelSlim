@@ -1,4 +1,4 @@
-import databases.BillCalculator;
+import calculator.BillCalculator;
 import databases.Database;
 import databases.PersonsDatabase;
 import databases.TicketsDatabase;
