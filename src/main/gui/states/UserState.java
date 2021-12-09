@@ -34,6 +34,7 @@ public class UserState extends State {
         }
 
         goBack.addActionListener(this);
+        addUser.addActionListener(this);
         pane.add(goBack);
         pane.add(addUser);
     }
@@ -47,6 +48,10 @@ public class UserState extends State {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == goBack) {
             inter.changeState(new StartState(this.inter));
+        }
+
+        if (e.getSource() == addUser) {
+            inter.changeState(new AddUserState(this.inter));
         }
     }
 }
