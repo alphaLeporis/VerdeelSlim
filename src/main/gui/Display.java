@@ -7,11 +7,11 @@ public class Display {
 
     public Display() {
         Interface GUI = new Interface();
-        GUI.init(); // init all our things!
+        GUI.init();
         System.out.println("VerdeelSlim GUI is starting...");
 
         // set window object size
-        GUI.setSize(800, 450);
+        GUI.setSize(450, 800);
         GUI.setTitle("VerdeelSlim");
         GUI.setVisible(true);
         GUI.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

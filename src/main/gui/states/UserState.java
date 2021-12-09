@@ -17,6 +17,9 @@ public class UserState extends State {
     private final Interface inter;
     private final Container pane;
 
+    private Button addUser = new Button("Voeg gebruiker toe");
+    private Button goBack = new Button("Keer terug");
+
     public UserState(Interface inter) {
         this.inter = inter;
         this.pane = inter.getPane();
@@ -24,12 +27,15 @@ public class UserState extends State {
 
     public void init() {
         HashMap<String, PersonEntry> allPersons = getDatabaseEntries();
-        pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
+        pane.setLayout(new GridLayout(0, 1));
         for (Map.Entry<String, PersonEntry> set : allPersons.entrySet()) {
             System.out.println(set.getKey());
             pane.add(new userLayout(set.getKey()).draw());
         }
 
+        goBack.addActionListener(this);
+        pane.add(goBack);
+        pane.add(addUser);
     }
 
     private HashMap<String, PersonEntry> getDatabaseEntries() {
@@ -39,6 +45,8 @@ public class UserState extends State {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getSource() == goBack) {
+            inter.changeState(new StartState(this.inter));
+        }
     }
 }
