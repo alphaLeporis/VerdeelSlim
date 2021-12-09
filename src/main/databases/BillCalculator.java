@@ -10,7 +10,13 @@ import static java.lang.Math.abs;
 
 public class BillCalculator {
 
+    private HashMap<String, ArrayList<Map.Entry<String, Double>>> debtsList;
+
     public BillCalculator() {
+    }
+
+    public HashMap<String, ArrayList<Map.Entry<String, Double>>> getDebtsList() {
+        return debtsList;
     }
 
     public void calculateBill() {
@@ -24,7 +30,7 @@ public class BillCalculator {
                 personsDatabase.getDB().get(name).calcNetAmount();
             }
         }
-        debtCalculator();
+         debtCalculator();
     }
 
     public void debtCalculator(){
@@ -35,13 +41,14 @@ public class BillCalculator {
             debts.put(elem, new ArrayList<>());
         }
         int debtsSettled = 0;
-        while(debtsSettled != personsDatabase.size()){
+        int fixedSize = personsDatabase.size();
+        while(debtsSettled != fixedSize){
             double netAmount1 = personsDatabase.get(personsDatabase.size()-1).getNetAmount();
             double netAmount2 = personsDatabase.get(0).getNetAmount();
-            double debtAmount = abs(netAmount1)-abs(netAmount2);
+            double debtAmount = Math.round((abs(netAmount1)-abs(netAmount2)) * 100.0) / 100.0;
             String name1 = personsDatabase.get(personsDatabase.size()-1).getName(); //Person with lowest debt
             String name2 = personsDatabase.get(0).getName(); //Person with highest debt
-            if(debtAmount < 0){ //Person with most debt has more debt than person with least debt has to receive
+            if(debtAmount < 0.0){ //Person with most debt has more debt than person with least debt has to receive
                 debts.get(name2).add(Map.entry(name1,-1*abs(netAmount1)));
                 debts.get(name1).add(Map.entry(name2, abs(netAmount1)));
                 personsDatabase.get(personsDatabase.size()-1).setNetAmount(0);
@@ -49,7 +56,7 @@ public class BillCalculator {
                 personsDatabase.remove(personsDatabase.size()-1);
                 debtsSettled++;
             }
-            else if(debtAmount > 0){ //Person with most debt can't pay the full amount the person with the least debt should get back
+            else if(debtAmount > 0.1){ //Person with most debt can't pay the full amount the person with the least debt should get back
                 debts.get(name2).add(Map.entry(name1, -1*abs(netAmount2)));
                 debts.get(name1).add(Map.entry(name2, abs(netAmount2)));
                 personsDatabase.get(personsDatabase.size()-1).setNetAmount(abs(netAmount1)-abs(netAmount2));
@@ -66,5 +73,6 @@ public class BillCalculator {
                 debtsSettled += 2;
             }
         }
+        this.debtsList = debts;
     }
 }
