@@ -30,6 +30,10 @@ public class PersonEntry extends DatabaseEntry {
         return netAmount;
     }
 
+    public void setNetAmount(double netAmount) {
+        this.netAmount = netAmount;
+    }
+
     public void setAmountBorrowed(double amountBorrowed) {
         this.amountBorrowed = amountBorrowed;
     }
