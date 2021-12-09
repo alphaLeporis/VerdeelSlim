@@ -48,8 +48,10 @@ public class Main
 
         TicketEntry ticket1 = ticketFactory.getTicket("Pretpark", "Amusement", 100.4, person1);
         TicketEntry ticket2= ticketFactory.getTicket("Diner", "Restaurant", 234.25, person1);
+        TicketEntry ticket3 = ticketFactory.getTicket("Movies", "Amusement", 453.13, person3);
         ticketsController.createEntry(ticket1);
         ticketsController.createEntry(ticket2);
+        ticketsController.createEntry(ticket3);
 
         BillCalculator billCalculator = new BillCalculator();
         billCalculator.calculateBill();
