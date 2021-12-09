@@ -15,6 +15,8 @@ public class AddUserState extends State {
 
 
     private Button addUser = new Button("Toevoegen");
+    private Button goBack = new Button("Keer terug");
+    private TextField nameUserText = new TextField("Wat is je naam?");
     private TextField nameUser = new TextField();
 
     public AddUserState(Interface inter) {
@@ -24,11 +26,13 @@ public class AddUserState extends State {
 
     @Override
     public void init() {
-        pane.setLayout(new GridLayout(0, 1));
-
+        pane.setLayout(new GridLayout(0, 2));
+        nameUserText.setEditable(false);
         nameUser.addActionListener(this);
         addUser.addActionListener(this);
+        pane.add(nameUserText);
         pane.add(nameUser);
+        pane.add(goBack);
         pane.add(addUser);
     }
 
@@ -38,6 +42,9 @@ public class AddUserState extends State {
             Database personDatabase = PersonsDatabase.getInstance();
             PersonsController personsController = new PersonsController(personDatabase);
             personsController.createEntry(new PersonEntry(nameUser.getText()));
+            inter.changeState(new UserState(this.inter));
+        }
+        if (e.getSource() == goBack) {
             inter.changeState(new UserState(this.inter));
         }
     }
