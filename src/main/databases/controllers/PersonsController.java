@@ -28,9 +28,7 @@ public class PersonsController implements Controller
     }
 
     @Override
-    public void modifyEntry(DatabaseEntry entry) {
-
-    }
+    public void modifyEntry(DatabaseEntry entry) {}
 
     @Override
     public HashMap<String, PersonEntry> getAllEntries() {

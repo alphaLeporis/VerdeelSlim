@@ -2,46 +2,48 @@ package gui.states;
 
 import databases.Database;
 import databases.PersonsDatabase;
+import databases.TicketsDatabase;
 import databases.controllers.PersonsController;
+import databases.controllers.TicketsController;
 import databases.entry.DatabaseEntry;
 import databases.entry.PersonEntry;
+import databases.entry.TicketEntry;
 import gui.Interface;
 import gui.components.userLayout;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserState extends State {
+public class TicketState extends State {
     private final Interface inter;
     private final Container pane;
 
-    private Button addUser = new Button("Voeg gebruiker toe");
+    private Button addTicket = new Button("Voeg ticket toe");
     private Button goBack = new Button("Keer terug");
 
-    public UserState(Interface inter) {
+    public TicketState(Interface inter) {
         this.inter = inter;
         this.pane = inter.getPane();
     }
 
     public void init() {
-        HashMap<String, PersonEntry> allPersons = getDatabaseEntries();
+        HashMap<String, TicketEntry> allPersons = getDatabaseEntries();
         pane.setLayout(new GridLayout(0, 1));
-        for (Map.Entry<String, PersonEntry> set : allPersons.entrySet()) {
+        for (Map.Entry<String, TicketEntry> set : allPersons.entrySet()) {
             pane.add(new userLayout(set.getKey()).draw());
         }
 
         goBack.addActionListener(this);
-        addUser.addActionListener(this);
+        addTicket.addActionListener(this);
         pane.add(goBack);
-        pane.add(addUser);
+        pane.add(addTicket);
     }
 
-    private HashMap<String, PersonEntry> getDatabaseEntries() {
-        Database personDB = PersonsDatabase.getInstance();
-        return new PersonsController(personDB).getAllEntries();
+    private HashMap<String, TicketEntry> getDatabaseEntries() {
+        Database ticketDB = TicketsDatabase.getInstance();
+        return new TicketsController(ticketDB).getAllEntries();
     }
 
     @Override
@@ -50,8 +52,8 @@ public class UserState extends State {
             inter.changeState(new StartState(this.inter));
         }
 
-        if (e.getSource() == addUser) {
-            inter.changeState(new AddUserState(this.inter));
+        if (e.getSource() == addTicket) {
+            inter.changeState(new AddState(this.inter));
         }
     }
 }

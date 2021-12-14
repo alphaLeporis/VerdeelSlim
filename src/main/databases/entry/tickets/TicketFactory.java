@@ -22,7 +22,7 @@ public class TicketFactory {
             return new TransportationTicket(name, price, paidBy);
         }
         else{
-            return null;
+            return new GenericTicket(name, price, paidBy);
         }
     }
 }

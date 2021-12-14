@@ -17,6 +17,7 @@ public class StartState extends State {
 
     private Button lookUsers;
     private Button addTicket;
+    private Button lookTicket;
     private Button calculate;
     private Button exit;
 
@@ -40,14 +41,17 @@ public class StartState extends State {
 
         lookUsers = new Button("Bekijk gebruikers 👥");
         addTicket = new Button("Voeg een ticket toe 🎟");
+        lookTicket = new Button("Bekijk hudige tickets");
         calculate = new Button("Bereken 🧾");
         exit = new Button("Sluit af 🚪");
         lookUsers.addActionListener(this);
         addTicket.addActionListener(this);
+        lookTicket.addActionListener(this);
         calculate.addActionListener(this);
         exit.addActionListener(this);
         pane.add(lookUsers);
         pane.add(addTicket);
+        pane.add(lookTicket);
         pane.add(calculate);
         pane.add(exit);
     }
@@ -60,6 +64,10 @@ public class StartState extends State {
 
         if (e.getSource() == addTicket) {
             inter.changeState(new AddState(this.inter));
+        }
+
+        if (e.getSource() == lookTicket) {
+            inter.changeState(new TicketState(this.inter));
         }
 
         if (e.getSource() == calculate) {
