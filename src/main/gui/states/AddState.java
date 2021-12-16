@@ -21,6 +21,7 @@ import java.util.List;
 public class AddState extends State{
     private final Interface inter;
     private final Container pane;
+    private TicketEntry entry;
 
     private JComboBox<String> betaaldBox;
     private JTextField betaaldBoxText = new JTextField(15);
@@ -31,7 +32,7 @@ public class AddState extends State{
     private JTextField prijsText = new JTextField(15);
     private JTextField prijsTextInput = new JTextField(15);
 
-    private Button addTicket = new Button("Voeg toe");
+    private Button addTicket = new Button("Verdeel");
     private Button goBack = new Button("Keer terug");
 
     public AddState(Interface inter) {
@@ -39,6 +40,11 @@ public class AddState extends State{
         this.pane = inter.getPane();
     }
 
+    public AddState(Interface inter, TicketEntry entry) {
+        this.inter = inter;
+        this.pane = inter.getPane();
+        this.entry = entry;
+    }
 
     @Override
     public void init() {
@@ -71,6 +77,14 @@ public class AddState extends State{
         pane.add(prijsTextInput);
         pane.add(goBack);
         pane.add(addTicket);
+
+        if (entry != null) {
+            this.naamTextInput.setText(entry.getName());
+            System.out.println(entry.getPaidBy().getName());
+            this.betaaldBox.setSelectedItem(entry.getPaidBy().getName());
+            this.ticketBox.setSelectedItem(entry.getTicketType());
+            this.prijsTextInput.setText(String.valueOf(entry.getPrice()));
+        }
     }
 
     // Todo: deze code is heel brak :)
@@ -117,10 +131,8 @@ public class AddState extends State{
             } else {
                 try {
                     double d = Double.parseDouble(prijsTextInput.getText());
-                    Controller ticketsController = new TicketsController(TicketsDatabase.getInstance());
                     TicketFactory ticketFactory = new TicketFactory();
-                    ticketsController.createEntry(ticketFactory.getTicket(naamTextInput.getText(), (String) ticketBox.getSelectedItem(), d, getUser((String) betaaldBox.getSelectedItem())));
-                    inter.changeState(new TicketState(this.inter));
+                    inter.changeState(new DivideTicketState(this.inter, ticketFactory.getTicket(naamTextInput.getText(), (String) ticketBox.getSelectedItem(), d, getUser((String) betaaldBox.getSelectedItem()))));
                 } catch (NumberFormatException e2) {
                     JOptionPane.showMessageDialog(null, "Dit is geen geldige prijs!");
                 }
