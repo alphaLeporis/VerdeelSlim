@@ -9,6 +9,7 @@ import databases.entry.DatabaseEntry;
 import databases.entry.PersonEntry;
 import databases.entry.TicketEntry;
 import gui.Interface;
+import gui.components.ticketLayout;
 import gui.components.userLayout;
 
 import java.awt.*;
@@ -32,7 +33,7 @@ public class TicketState extends State {
         HashMap<String, TicketEntry> allPersons = getDatabaseEntries();
         pane.setLayout(new GridLayout(0, 1));
         for (Map.Entry<String, TicketEntry> set : allPersons.entrySet()) {
-            pane.add(new userLayout(set.getKey()).draw());
+            pane.add(new ticketLayout(set.getKey(), set.getValue()).draw());
         }
 
         goBack.addActionListener(this);
