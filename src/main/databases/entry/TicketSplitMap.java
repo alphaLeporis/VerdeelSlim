@@ -37,6 +37,10 @@ public class TicketSplitMap {
         this.splitMap.put(name, value);
     }
 
+    public double getName(String name){
+        return this.splitMap.get(name);
+    }
+
     public double sum(){
         double sum = 0;
         for(Double amount: this.splitMap.values()){
