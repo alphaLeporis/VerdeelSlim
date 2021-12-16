@@ -113,7 +113,6 @@ public class AddState extends State{
             System.out.println(ticketBox.getSelectedItem());
             System.out.println(prijsTextInput.getText().length());
             if (prijsTextInput.getText().length() == 0) {
-                System.out.println("nee loser");
                 JOptionPane.showMessageDialog(null, "Vul een prijs in!");
             } else {
                 try {
@@ -121,7 +120,7 @@ public class AddState extends State{
                     Controller ticketsController = new TicketsController(TicketsDatabase.getInstance());
                     TicketFactory ticketFactory = new TicketFactory();
                     ticketsController.createEntry(ticketFactory.getTicket(naamTextInput.getText(), (String) ticketBox.getSelectedItem(), d, getUser((String) betaaldBox.getSelectedItem())));
-
+                    inter.changeState(new TicketState(this.inter));
                 } catch (NumberFormatException e2) {
                     JOptionPane.showMessageDialog(null, "Dit is geen geldige prijs!");
                 }

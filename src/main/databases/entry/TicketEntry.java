@@ -35,6 +35,10 @@ public abstract class TicketEntry extends DatabaseEntry {
         }
     }
 
+    public String getTicketType() {
+        return ticketType;
+    };
+
     public double getPrice() {
         return price;
     }
