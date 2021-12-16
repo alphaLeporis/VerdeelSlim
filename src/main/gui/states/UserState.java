@@ -3,12 +3,10 @@ package gui.states;
 import databases.Database;
 import databases.PersonsDatabase;
 import databases.controllers.PersonsController;
-import databases.entry.DatabaseEntry;
 import databases.entry.PersonEntry;
 import gui.Interface;
 import gui.components.userLayout;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.HashMap;

@@ -1,16 +1,11 @@
 package gui.states;
 
 import databases.Database;
-import databases.PersonsDatabase;
 import databases.TicketsDatabase;
-import databases.controllers.PersonsController;
 import databases.controllers.TicketsController;
-import databases.entry.DatabaseEntry;
-import databases.entry.PersonEntry;
 import databases.entry.TicketEntry;
 import gui.Interface;
 import gui.components.ticketLayout;
-import gui.components.userLayout;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

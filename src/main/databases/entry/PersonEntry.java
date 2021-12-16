@@ -14,28 +14,12 @@ public class PersonEntry extends DatabaseEntry {
         this.netAmount = 0;
     }
 
-    public double getAmountPaid() {
-        return amountPaid;
-    }
-
-    public void setAmountPaid(double amountPaid) {
-        this.amountPaid = amountPaid;
-    }
-
-    public double getAmountBorrowed() {
-        return amountBorrowed;
-    }
-
     public double getNetAmount() {
         return netAmount;
     }
 
     public void setNetAmount(double netAmount) {
         this.netAmount = netAmount;
-    }
-
-    public void setAmountBorrowed(double amountBorrowed) {
-        this.amountBorrowed = amountBorrowed;
     }
 
     public void addAmountPaid(double amountPaid){

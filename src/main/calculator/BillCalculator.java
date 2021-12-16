@@ -40,13 +40,23 @@ public class BillCalculator {
         personsDatabase.sort(new PersonEntryComparator());
         HashMap<String, ArrayList<Map.Entry<String, Double>>> debts = new HashMap<>();
         for(String elem: PersonsDatabase.getInstance().getDB().keySet()){
-            debts.put(elem, new ArrayList<>());
+                debts.put(elem, new ArrayList<>());
         }
         int debtsSettled = 0;
         int fixedSize = personsDatabase.size();
         while(debtsSettled != fixedSize){
             double netAmount1 = personsDatabase.get(personsDatabase.size()-1).getNetAmount();
             double netAmount2 = personsDatabase.get(0).getNetAmount();
+            if(netAmount1 == 0.0){
+                personsDatabase.remove(personsDatabase.size()-1);
+                debtsSettled++;
+                continue;
+            }
+            if(netAmount2 == 0.0){
+                personsDatabase.remove(0);
+                debtsSettled++;
+                continue;
+            }
             double debtAmount = Math.round((abs(netAmount1)-abs(netAmount2)) * 100.0) / 100.0;
             String name1 = personsDatabase.get(personsDatabase.size()-1).getName(); //Person with lowest debt
             String name2 = personsDatabase.get(0).getName(); //Person with highest debt
