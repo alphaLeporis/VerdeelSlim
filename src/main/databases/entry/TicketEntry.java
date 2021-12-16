@@ -22,8 +22,12 @@ public abstract class TicketEntry extends DatabaseEntry {
     }
 
     public void initializeMap(){
+        this.divideEvenly();
+    }
+
+    public void divideEvenly(){
         for (String entry: this.personsDatabase.getDB().keySet()){
-                this.ticketSplitMap.addName(entry, round((this.price/this.personsDatabase.getDB().size())*100.0)/100.0);
+            this.ticketSplitMap.addName(entry, round((this.price/this.personsDatabase.getDB().size())*100.0)/100.0);
         }
         double sum = this.ticketSplitMap.sum();
         if(abs(sum-this.price) > 0.00001){
@@ -41,6 +45,10 @@ public abstract class TicketEntry extends DatabaseEntry {
 
     public PersonEntry getPaidBy() {
         return paidBy;
+    }
+
+    public void setAmount(PersonEntry person, double amount){
+
     }
 
     public void setPaidBy(PersonEntry paidBy) {
