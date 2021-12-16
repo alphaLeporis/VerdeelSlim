@@ -55,6 +55,14 @@ public abstract class TicketEntry extends DatabaseEntry {
         this.ticketSplitMap.getSplitMap().put(person.getName(), amount);
     }
 
+    public boolean checkPriceIsPaid(){
+        double sum = 0;
+        for(double part: this.ticketSplitMap.getSplitMap().values()){
+            sum += part;
+        }
+        return(abs(sum-this.price) < 0.00001);
+    }
+
     public void setPaidBy(PersonEntry paidBy) {
         this.paidBy = paidBy;
     }
