@@ -37,7 +37,7 @@ public abstract class TicketEntry extends DatabaseEntry {
 
     public String getTicketType() {
         return ticketType;
-    };
+    }
 
     public double getPrice() {
         return price;
@@ -52,7 +52,7 @@ public abstract class TicketEntry extends DatabaseEntry {
     }
 
     public void setAmount(PersonEntry person, double amount){
-
+        this.ticketSplitMap.getSplitMap().put(person.getName(), amount);
     }
 
     public void setPaidBy(PersonEntry paidBy) {
