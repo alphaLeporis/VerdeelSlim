@@ -35,4 +35,13 @@ public class PersonEntry extends DatabaseEntry {
     }
 
 
+    @Override
+    public String toString() {
+        return "PersonEntry{" +
+                "name='" + name + '\'' +
+                ", amountPaid=" + amountPaid +
+                ", amountBorrowed=" + amountBorrowed +
+                ", netAmount=" + netAmount +
+                '}';
+    }
 }

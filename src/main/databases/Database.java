@@ -18,4 +18,5 @@ public abstract class Database
 
     abstract void addListeners(PropertyChangeListener observer);
 
+    abstract void save();
 }

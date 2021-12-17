@@ -74,4 +74,15 @@ public abstract class TicketEntry extends DatabaseEntry {
     public void setTicketSplitMap(TicketSplitMap ticketSplitMap) {
         this.ticketSplitMap = ticketSplitMap;
     }
+
+    @Override
+    public String toString() {
+        return "TicketEntry{" +
+                "name='" + name + '\'' +
+                ", ticketType='" + ticketType + '\'' +
+                ", price=" + price +
+                ", paidBy=" + paidBy +
+                ", ticketSplitMap=" + ticketSplitMap +
+                '}';
+    }
 }
