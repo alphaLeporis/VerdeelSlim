@@ -30,9 +30,16 @@ public class PersonEntry extends DatabaseEntry {
         this.amountBorrowed += amountBorrowed;
     }
 
+    public void reduceAmountPaid(double amountPaid){
+        this.amountPaid -= amountPaid;
+    }
+
+    public void reduceAmountBorrowed(double amountBorrowed){
+        this.amountBorrowed -= amountBorrowed;
+    }
+
     public void calcNetAmount(){
         this.netAmount = this.amountPaid-this.amountBorrowed;
     }
-
 
 }

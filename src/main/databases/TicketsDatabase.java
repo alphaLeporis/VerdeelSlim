@@ -27,10 +27,12 @@ public class TicketsDatabase extends Database {
     @Override
     public void addEntry(DatabaseEntry entry) {
         this.db.put(entry.getName(), (TicketEntry) entry);
+        this.addDebstToPersons((TicketEntry) entry);
     }
 
     @Override
     public void removeEntry(DatabaseEntry entry) {
+        this.removeDebstFromPersons((TicketEntry) entry);
         this.db.remove(entry.getName());
     }
 
@@ -47,5 +49,21 @@ public class TicketsDatabase extends Database {
     @Override
     void addListeners(PropertyChangeListener observer) {
 
+    }
+
+    public void addDebstToPersons(TicketEntry ticket){
+        PersonsDatabase personsDatabase = PersonsDatabase.getInstance();
+        personsDatabase.getDB().get(ticket.getPaidBy().getName()).addAmountPaid(ticket.getPrice());
+        for (String name : ticket.getTicketSplitMap().getSplitMap().keySet()) {
+            personsDatabase.getDB().get(name).addAmountBorrowed(ticket.getTicketSplitMap().getSplitMap().get(name));
+        }
+    }
+
+    public void removeDebstFromPersons(TicketEntry ticket){
+        PersonsDatabase personsDatabase = PersonsDatabase.getInstance();
+        personsDatabase.getDB().get(ticket.getPaidBy().getName()).reduceAmountPaid(ticket.getPrice());
+        for (String name : ticket.getTicketSplitMap().getSplitMap().keySet()) {
+            personsDatabase.getDB().get(name).reduceAmountBorrowed(ticket.getTicketSplitMap().getSplitMap().get(name));
+        }
     }
 }
