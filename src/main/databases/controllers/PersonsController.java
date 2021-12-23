@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class PersonsController implements Controller
 {
-    private PersonsDatabase db;
+    private final PersonsDatabase db;
 
     public PersonsController(Database db)
     {

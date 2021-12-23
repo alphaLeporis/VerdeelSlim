@@ -16,8 +16,8 @@ public class UserState extends State {
     private final Interface inter;
     private final Container pane;
 
-    private Button addUser = new Button("Voeg gebruiker toe");
-    private Button goBack = new Button("Keer terug");
+    private final Button addUser = new Button("Voeg gebruiker toe");
+    private final Button goBack = new Button("Keer terug");
 
     public UserState(Interface inter) {
         this.inter = inter;

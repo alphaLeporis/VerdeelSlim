@@ -6,8 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ticketLayout {
-    String name;
-    TicketEntry entry;
+    final String name;
+    final TicketEntry entry;
     public ticketLayout(String name, TicketEntry entry) {
         this.name = name;
         this.entry = entry;

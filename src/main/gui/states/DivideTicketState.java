@@ -8,7 +8,6 @@ import databases.controllers.PersonsController;
 import databases.controllers.TicketsController;
 import databases.entry.PersonEntry;
 import databases.entry.TicketEntry;
-import databases.entry.tickets.TicketFactory;
 import gui.Interface;
 import gui.components.userLayout;
 
@@ -18,6 +17,8 @@ import java.awt.event.ActionEvent;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.Math.abs;
+
 public class DivideTicketState extends State {
     private final Interface inter;
     private final Container pane;
@@ -25,11 +26,15 @@ public class DivideTicketState extends State {
     private HashMap<String, JTextField> textEntries = new HashMap();
     private boolean Even = true;
 
-    private Button addTicket = new Button("Voeg ticket toe");
-    private Button goBack = new Button("Keer terug");
+    private final Button addTicket = new Button("Voeg ticket toe");
+    private final Button goBack = new Button("Keer terug");
+    private final Button checkSum = new Button("Kijk na");
 
-    private JRadioButton option1 = new JRadioButton("Even verdeeld");
-    private JRadioButton option2 = new JRadioButton("Oneven verdeeld");
+    private final JRadioButton option1 = new JRadioButton("Even verdeeld");
+    private final JRadioButton option2 = new JRadioButton("Oneven verdeeld");
+    private final JTextArea yourSum = new JTextArea();
+
+    private double finalSum = 0;
 
     public DivideTicketState(Interface inter, TicketEntry entry) {
         this.inter = inter;
@@ -47,19 +52,27 @@ public class DivideTicketState extends State {
         pane.add(option1);
         pane.add(option2);
 
-
+        finalSum = 0;
         for (Map.Entry<String, PersonEntry> set : allPersons.entrySet()) {
             pane.add(new userLayout(set.getKey()).draw());
             JTextField text = new JTextField(String.valueOf(entry.getTicketSplitMap().getName(set.getKey())));
+            finalSum = finalSum + entry.getTicketSplitMap().getName(set.getKey());
             text.setEditable(!Even);
+            text.addActionListener(this);
             textEntries.put(set.getKey(), text);
             pane.add(text);
         }
+        yourSum.setEditable(false);
+        yourSum.setText("Totaal prijs: " +String.valueOf(finalSum));
 
         goBack.addActionListener(this);
+        checkSum.addActionListener(this);
         addTicket.addActionListener(this);
         option1.addActionListener(this);
         option2.addActionListener(this);
+        pane.add(checkSum);
+        pane.add(yourSum);
+
         pane.add(goBack);
         pane.add(addTicket);
     }
@@ -72,11 +85,37 @@ public class DivideTicketState extends State {
     private PersonEntry getUser(String name) {
         Database personDB = PersonsDatabase.getInstance();
         HashMap<String, PersonEntry>  persons = new PersonsController(personDB).getAllEntries();
-        return (PersonEntry) persons.get(name);
+        return persons.get(name);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == checkSum) {
+            double sum = 0;
+            for (Map.Entry<String, JTextField> set : textEntries.entrySet()) {
+                try {
+                    double d = Double.parseDouble(set.getValue().getText());
+                    sum = sum + d;
+                } catch (NumberFormatException e2) {
+                    JOptionPane.showMessageDialog(null, "Dit is geen geldige prijs!");
+                    return;
+                }
+            }
+            System.out.println(sum);
+            yourSum.setText("Totaal prijs: " +String.valueOf(sum));
+            if (sum != finalSum) {
+                yourSum.setText("Jouw som: " +String.valueOf(sum) +
+                        "\nDe correcte som: "+ String.valueOf(finalSum) +
+                        "\nJe mist: "+ String.valueOf(abs(finalSum-sum)));
+
+                yourSum.setBackground(Color.RED);
+            } else {
+                yourSum.setText("De correcte en jouw som: " +String.valueOf(sum));
+                yourSum.setBackground(null);
+            }
+        }
+
+
         if (e.getSource() == addTicket) {
             for (Map.Entry<String, JTextField> set : textEntries.entrySet()) {
                 try {

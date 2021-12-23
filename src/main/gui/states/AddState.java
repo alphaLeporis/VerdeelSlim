@@ -22,16 +22,16 @@ public class AddState extends State{
     private TicketEntry entry;
 
     private JComboBox<String> betaaldBox;
-    private JTextField betaaldBoxText = new JTextField(15);
-    private JTextField naamText = new JTextField(15);
-    private JTextField naamTextInput = new JTextField(15);
-    private JComboBox ticketBox = new JComboBox(new String[]{"Accomodation", "Amusement", "Restaurant", "Transportation"});
-    private JTextField ticketBoxText = new JTextField(15);
-    private JTextField prijsText = new JTextField(15);
-    private JTextField prijsTextInput = new JTextField(15);
+    private final JTextField betaaldBoxText = new JTextField(15);
+    private final JTextField naamText = new JTextField(15);
+    private final JTextField naamTextInput = new JTextField(15);
+    private final JComboBox ticketBox = new JComboBox(new String[]{"Accomodation", "Amusement", "Restaurant", "Transportation"});
+    private final JTextField ticketBoxText = new JTextField(15);
+    private final JTextField prijsText = new JTextField(15);
+    private final JTextField prijsTextInput = new JTextField(15);
 
-    private Button addTicket = new Button("Verdeel");
-    private Button goBack = new Button("Keer terug");
+    private final Button addTicket = new Button("Verdeel");
+    private final Button goBack = new Button("Keer terug");
 
     public AddState(Interface inter) {
         this.inter = inter;
@@ -92,7 +92,7 @@ public class AddState extends State{
         List<String>list = new ArrayList<String>();
         list.addAll(persons.keySet());
         System.out.println(list);
-        String sa[] = {};
+        String[] sa = {};
         sa = list.toArray(sa);
         return sa;
     }
@@ -100,19 +100,7 @@ public class AddState extends State{
     private PersonEntry getUser(String name) {
         Database personDB = PersonsDatabase.getInstance();
         HashMap<String, PersonEntry>  persons = new PersonsController(personDB).getAllEntries();
-        return (PersonEntry) persons.get(name);
-    }
-
-    // Todo: deze code is ook heel brak :)
-    private String[] getAllTickets() {
-        Database ticketDB = TicketsDatabase.getInstance();
-        HashMap<String, TicketEntry>  persons = new TicketsController(ticketDB).getAllEntries();
-        List<String>list = new ArrayList<String>();
-        list.addAll(persons.keySet());
-        System.out.println(list);
-        String sa[] = {};
-        sa = list.toArray(sa);
-        return sa;
+        return persons.get(name);
     }
 
     @Override

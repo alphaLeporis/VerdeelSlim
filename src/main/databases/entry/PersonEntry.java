@@ -1,7 +1,5 @@
 package databases.entry;
 
-import java.util.Comparator;
-
 public class PersonEntry extends DatabaseEntry {
     private double amountPaid;
     private double amountBorrowed;

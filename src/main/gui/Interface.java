@@ -1,8 +1,6 @@
 package gui;
-import gui.states.AddUserState;
 import gui.states.StartState;
 import gui.states.State;
-import gui.states.UserState;
 
 import javax.swing.*;
 import java.awt.*;

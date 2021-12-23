@@ -7,7 +7,6 @@ import databases.controllers.PersonsController;
 import databases.entry.PersonEntry;
 import gui.Interface;
 import gui.components.debtLayout;
-import gui.components.userLayout;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,7 +18,7 @@ public class CalculateState extends State {
     private final Interface inter;
     private final Container pane;
 
-    private Button goBack = new Button("Keer terug");
+    private final Button goBack = new Button("Keer terug");
 
     public CalculateState(Interface inter) {
         this.inter = inter;

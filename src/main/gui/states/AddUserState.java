@@ -14,10 +14,10 @@ public class AddUserState extends State {
     private final Container pane;
 
 
-    private Button addUser = new Button("Toevoegen");
-    private Button goBack = new Button("Keer terug");
-    private TextField nameUserText = new TextField("Wat is je naam?");
-    private TextField nameUser = new TextField();
+    private final Button addUser = new Button("Toevoegen");
+    private final Button goBack = new Button("Keer terug");
+    private final TextField nameUserText = new TextField("Wat is je naam?");
+    private final TextField nameUser = new TextField();
 
     public AddUserState(Interface inter) {
         this.inter = inter;

@@ -5,11 +5,11 @@ import databases.PersonsDatabase;
 import static java.lang.Math.*;
 
 public abstract class TicketEntry extends DatabaseEntry {
-    private String ticketType;
+    private final String ticketType;
     private double price;
     private PersonEntry paidBy;
     private TicketSplitMap ticketSplitMap;
-    private PersonsDatabase personsDatabase;
+    private final PersonsDatabase personsDatabase;
 
     public TicketEntry(String name, String ticketType, double price, PersonEntry paidBy) {
         super(name);

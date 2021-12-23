@@ -16,8 +16,8 @@ public class TicketState extends State {
     private final Interface inter;
     private final Container pane;
 
-    private Button addTicket = new Button("Voeg ticket toe");
-    private Button goBack = new Button("Keer terug");
+    private final Button addTicket = new Button("Voeg ticket toe");
+    private final Button goBack = new Button("Keer terug");
 
     public TicketState(Interface inter) {
         this.inter = inter;

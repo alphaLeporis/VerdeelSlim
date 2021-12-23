@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class TicketsController implements Controller{
 
-    private Database db;
+    private final Database db;
 
     public TicketsController(Database db)
     {

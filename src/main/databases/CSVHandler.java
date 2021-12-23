@@ -1,6 +1,5 @@
 package databases;
 
-import databases.entry.DatabaseEntry;
 import org.supercsv.io.CsvListWriter;
 import org.supercsv.io.ICsvListWriter;
 import org.supercsv.prefs.CsvPreference;
