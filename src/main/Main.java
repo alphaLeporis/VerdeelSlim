@@ -24,8 +24,6 @@ public class Main
     {
         System.out.println("VerdeelSlim is starting...");
         run();
-
-
         Display display = new Display();
     }
 

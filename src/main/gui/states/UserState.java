@@ -6,35 +6,20 @@ import databases.controllers.PersonsController;
 import databases.entry.PersonEntry;
 import gui.Interface;
 import gui.components.userLayout;
+import observers.gui.UserStateObserver;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.util.HashMap;
 import java.util.Map;
 
 public class UserState extends State {
-    private final Interface inter;
-    private final Container pane;
-
-    private final Button addUser = new Button("Voeg gebruiker toe");
-    private final Button goBack = new Button("Keer terug");
+    private final UserStateObserver observer = new UserStateObserver();
+    public static Button addUser;
+    public static Button goBack;
+    private final HashMap<String, PersonEntry> allPersons = getDatabaseEntries();
 
     public UserState(Interface inter) {
-        this.inter = inter;
-        this.pane = inter.getPane();
-    }
-
-    public void init() {
-        HashMap<String, PersonEntry> allPersons = getDatabaseEntries();
-        pane.setLayout(new GridLayout(0, 1));
-        for (Map.Entry<String, PersonEntry> set : allPersons.entrySet()) {
-            pane.add(new userLayout(set.getKey()).draw());
-        }
-
-        goBack.addActionListener(this);
-        addUser.addActionListener(this);
-        pane.add(goBack);
-        pane.add(addUser);
+        super(inter);
     }
 
     private HashMap<String, PersonEntry> getDatabaseEntries() {
@@ -43,13 +28,27 @@ public class UserState extends State {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == goBack) {
-            inter.changeState(new StartState(this.inter));
+    void setLayout() {
+        pane.setLayout(new GridLayout(0, 1));
+    }
+
+    @Override
+    void initActionListener() {
+        goBack.addActionListener(observer);
+        addUser.addActionListener(observer);
+    }
+
+    @Override
+    void createUIElements() {
+        addUser = new Button("Voeg gebruiker toe");
+        goBack = new Button("Keer terug");
+
+        for (Map.Entry<String, PersonEntry> set : allPersons.entrySet()) {
+            pane.add(new userLayout(set.getKey()).draw());
         }
 
-        if (e.getSource() == addUser) {
-            inter.changeState(new AddUserState(this.inter));
-        }
+        pane.add(goBack);
+        pane.add(addUser);
     }
+
 }

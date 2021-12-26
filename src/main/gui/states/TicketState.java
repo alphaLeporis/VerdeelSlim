@@ -6,35 +6,20 @@ import databases.controllers.TicketsController;
 import databases.entry.TicketEntry;
 import gui.Interface;
 import gui.components.ticketLayout;
+import observers.gui.TicketStateObserver;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.util.HashMap;
 import java.util.Map;
 
 public class TicketState extends State {
-    private final Interface inter;
-    private final Container pane;
-
-    private final Button addTicket = new Button("Voeg ticket toe");
-    private final Button goBack = new Button("Keer terug");
+    private final TicketStateObserver observer = new TicketStateObserver();
+    public static Button addTicket;
+    public static Button goBack;
+    private final HashMap<String, TicketEntry> allPersons = getDatabaseEntries();
 
     public TicketState(Interface inter) {
-        this.inter = inter;
-        this.pane = inter.getPane();
-    }
-
-    public void init() {
-        HashMap<String, TicketEntry> allPersons = getDatabaseEntries();
-        pane.setLayout(new GridLayout(0, 1));
-        for (Map.Entry<String, TicketEntry> set : allPersons.entrySet()) {
-            pane.add(new ticketLayout(set.getKey(), set.getValue()).draw());
-        }
-
-        goBack.addActionListener(this);
-        addTicket.addActionListener(this);
-        pane.add(goBack);
-        pane.add(addTicket);
+        super(inter);
     }
 
     private HashMap<String, TicketEntry> getDatabaseEntries() {
@@ -43,13 +28,27 @@ public class TicketState extends State {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == goBack) {
-            inter.changeState(new StartState(this.inter));
+    void setLayout() {
+        pane.setLayout(new GridLayout(0, 1));
+    }
+
+    @Override
+    void createUIElements() {
+        addTicket = new Button("Voeg ticket toe");
+        goBack = new Button("Keer terug");
+
+        for (Map.Entry<String, TicketEntry> set : allPersons.entrySet()) {
+            pane.add(new ticketLayout(set.getKey(), set.getValue()).draw());
         }
 
-        if (e.getSource() == addTicket) {
-            inter.changeState(new AddState(this.inter));
-        }
+        pane.add(goBack);
+        pane.add(addTicket);
+
+    }
+
+    @Override
+    void initActionListener() {
+        goBack.addActionListener(observer);
+        addTicket.addActionListener(observer);
     }
 }

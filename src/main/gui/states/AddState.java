@@ -2,51 +2,49 @@ package gui.states;
 
 import databases.Database;
 import databases.PersonsDatabase;
-import databases.TicketsDatabase;
 import databases.controllers.PersonsController;
-import databases.controllers.TicketsController;
 import databases.entry.PersonEntry;
 import databases.entry.TicketEntry;
-import databases.entry.tickets.TicketFactory;
 import gui.Interface;
+import observers.gui.AddStateObserver;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.util.*;
 import java.util.List;
 
 public class AddState extends State{
-    private final Interface inter;
-    private final Container pane;
+    private final AddStateObserver observer = new AddStateObserver();
     private TicketEntry entry;
 
-    private JComboBox<String> betaaldBox;
-    private final JTextField betaaldBoxText = new JTextField(15);
-    private final JTextField naamText = new JTextField(15);
-    private final JTextField naamTextInput = new JTextField(15);
-    private final JComboBox ticketBox = new JComboBox(new String[]{"Accomodation", "Amusement", "Restaurant", "Transportation"});
-    private final JTextField ticketBoxText = new JTextField(15);
-    private final JTextField prijsText = new JTextField(15);
-    private final JTextField prijsTextInput = new JTextField(15);
+    public static final JComboBox<String> betaaldBox = new JComboBox<>(getAllUsers());
+    private final JTextField betaaldBoxText = new JTextField();
+    private final JTextField naamText = new JTextField();
+    public static final JTextField naamTextInput = new JTextField();
+    public static final JComboBox<String> ticketBox = new JComboBox<>(new String[]{"Accomodation", "Amusement", "Restaurant", "Transportation"});
+    private final JTextField ticketBoxText = new JTextField();
+    private final JTextField prijsText = new JTextField();
+    public static final JTextField prijsTextInput = new JTextField();
 
-    private final Button addTicket = new Button("Verdeel");
-    private final Button goBack = new Button("Keer terug");
+    public static final Button addTicket = new Button("Verdeel");
+    public static final Button goBack = new Button("Keer terug");
 
     public AddState(Interface inter) {
-        this.inter = inter;
-        this.pane = inter.getPane();
+        super(inter);
     }
 
     public AddState(Interface inter, TicketEntry entry) {
-        this.inter = inter;
-        this.pane = inter.getPane();
+        super(inter);
         this.entry = entry;
     }
 
     @Override
-    public void init() {
+    void setLayout() {
         pane.setLayout(new GridLayout(0, 2));
+    }
+
+    @Override
+    void createUIElements() {
         betaaldBoxText.setText("Wie heeft betaald?");
         betaaldBoxText.setEditable(false);
         naamText.setText("Wat is de naam van het ticket?");
@@ -59,11 +57,7 @@ public class AddState extends State{
         prijsText.setEditable(false);
         prijsTextInput.setEditable(true);
 
-        betaaldBox = new JComboBox<>(getAllUsers());
         ticketBox.setEditable(true);
-
-        addTicket.addActionListener(this);
-        goBack.addActionListener(this);
 
         pane.add(betaaldBoxText);
         pane.add(betaaldBox);
@@ -77,53 +71,35 @@ public class AddState extends State{
         pane.add(addTicket);
 
         if (entry != null) {
-            this.naamTextInput.setText(entry.getName());
+            naamTextInput.setText(entry.getName());
             System.out.println(entry.getPaidBy().getName());
-            this.betaaldBox.setSelectedItem(entry.getPaidBy().getName());
-            this.ticketBox.setSelectedItem(entry.getTicketType());
-            this.prijsTextInput.setText(String.valueOf(entry.getPrice()));
+            betaaldBox.setSelectedItem(entry.getPaidBy().getName());
+            ticketBox.setSelectedItem(entry.getTicketType());
+            prijsTextInput.setText(String.valueOf(entry.getPrice()));
         }
     }
 
+    @Override
+    void initActionListener() {
+        addTicket.addActionListener(observer);
+        goBack.addActionListener(observer);
+    }
+
     // Todo: deze code is heel brak :)
-    private String[] getAllUsers() {
+    private static String[] getAllUsers() {
         Database personDB = PersonsDatabase.getInstance();
         HashMap<String, PersonEntry>  persons = new PersonsController(personDB).getAllEntries();
-        List<String>list = new ArrayList<String>();
-        list.addAll(persons.keySet());
+        List<String> list = new ArrayList<String>(persons.keySet());
         System.out.println(list);
         String[] sa = {};
         sa = list.toArray(sa);
         return sa;
     }
 
-    private PersonEntry getUser(String name) {
+    public static PersonEntry getUser(String name) {
         Database personDB = PersonsDatabase.getInstance();
         HashMap<String, PersonEntry>  persons = new PersonsController(personDB).getAllEntries();
         return persons.get(name);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == goBack) {
-            inter.changeState(new StartState(this.inter));
-        }
-
-        if (e.getSource() == addTicket) {
-            System.out.println(ticketBox.getSelectedItem());
-            System.out.println(prijsTextInput.getText().length());
-            if (prijsTextInput.getText().length() == 0) {
-                JOptionPane.showMessageDialog(null, "Vul een prijs in!");
-            } else {
-                try {
-                    double d = Double.parseDouble(prijsTextInput.getText());
-                    TicketFactory ticketFactory = new TicketFactory();
-                    inter.changeState(new DivideTicketState(this.inter, ticketFactory.getTicket(naamTextInput.getText(), (String) ticketBox.getSelectedItem(), d, getUser((String) betaaldBox.getSelectedItem()))));
-                } catch (NumberFormatException e2) {
-                    JOptionPane.showMessageDialog(null, "Dit is geen geldige prijs!");
-                }
-            }
-
-        }
-    }
 }

@@ -1,80 +1,53 @@
 package gui.states;
 
 import gui.Interface;
+import observers.gui.StartStateObserver;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.Objects;
 
 public class StartState extends State {
-    private final Container pane;
-    private final Interface inter;
-
-    private Button lookUsers;
-    private Button addTicket;
-    private Button lookTicket;
-    private Button calculate;
-    private Button exit;
+    private final StartStateObserver observer = new StartStateObserver();
+    public static Button lookUsers;
+    public static Button addTicket;
+    public static Button lookTicket;
+    public static Button calculate;
+    public static Button exit;
 
     public StartState(Interface inter) {
-        this.inter = inter;
-        this.pane = inter.getPane();
+        super(inter);
     }
 
     public void init() {
+        setHeaderImage("/logo.png");
+        super.init();
+    }
+
+    @Override
+    void setLayout() {
         pane.setLayout(new GridLayout(0, 1));
-        BufferedImage img = null;
-        try {
-            img = ImageIO.read(Objects.requireNonNull(StartState.class.getResource("/logo.png")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        JLabel pic = new JLabel(new ImageIcon(img));
-        pane.add(pic);
+    }
 
+    @Override
+    void initActionListener() {
+        lookUsers.addActionListener(observer);
+        addTicket.addActionListener(observer);
+        lookTicket.addActionListener(observer);
+        calculate.addActionListener(observer);
+        exit.addActionListener(observer);
+    }
 
-
+    @Override
+    void createUIElements() {
         lookUsers = new Button("Bekijk gebruikers 👥");
         addTicket = new Button("Voeg een ticket toe 🎟");
         lookTicket = new Button("Bekijk hudige tickets");
         calculate = new Button("Bereken 🧾");
         exit = new Button("Sluit af 🚪");
-        lookUsers.addActionListener(this);
-        addTicket.addActionListener(this);
-        lookTicket.addActionListener(this);
-        calculate.addActionListener(this);
-        exit.addActionListener(this);
+
         pane.add(lookUsers);
         pane.add(addTicket);
         pane.add(lookTicket);
         pane.add(calculate);
         pane.add(exit);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == lookUsers) {
-            inter.changeState(new UserState(this.inter));
-        }
-
-        if (e.getSource() == addTicket) {
-            inter.changeState(new AddState(this.inter));
-        }
-
-        if (e.getSource() == lookTicket) {
-            inter.changeState(new TicketState(this.inter));
-        }
-
-        if (e.getSource() == calculate) {
-            inter.changeState(new CalculateState(this.inter));
-        }
-
-        if (e.getSource() == exit) {
-            System.exit(0);
-        }
     }
 }

@@ -16,21 +16,27 @@ public class TicketSplitMap {
         this.splitMap = new HashMap<>();
     }
 
-    public boolean isPercentage() {
-        return isPercentage;
-    }
+// --Commented out by Inspection START (26/12/2021, 23:19):
+//    public boolean isPercentage() {
+//        return isPercentage;
+//    }
+// --Commented out by Inspection STOP (26/12/2021, 23:19)
 
-    public void setPercentage(boolean percentage) {
-        isPercentage = percentage;
-    }
+// --Commented out by Inspection START (26/12/2021, 23:19):
+//    public void setPercentage(boolean percentage) {
+//        isPercentage = percentage;
+//    }
+// --Commented out by Inspection STOP (26/12/2021, 23:19)
 
     public HashMap<String, Double> getSplitMap() {
         return splitMap;
     }
 
-    public void setSplitMap(HashMap<String, Double> splitMap) {
-        this.splitMap = splitMap;
-    }
+// --Commented out by Inspection START (26/12/2021, 23:19):
+//    public void setSplitMap(HashMap<String, Double> splitMap) {
+//        this.splitMap = splitMap;
+//    }
+// --Commented out by Inspection STOP (26/12/2021, 23:19)
 
     public void addName(String name, double value){
         this.splitMap.put(name, value);

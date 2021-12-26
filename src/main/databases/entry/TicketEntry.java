@@ -43,9 +43,11 @@ public abstract class TicketEntry extends DatabaseEntry {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
+// --Commented out by Inspection START (26/12/2021, 23:19):
+//    public void setPrice(double price) {
+//        this.price = price;
+//    }
+// --Commented out by Inspection STOP (26/12/2021, 23:19)
 
     public PersonEntry getPaidBy() {
         return paidBy;
@@ -63,17 +65,21 @@ public abstract class TicketEntry extends DatabaseEntry {
         return(abs(sum-this.price) < 0.00001);
     }
 
-    public void setPaidBy(PersonEntry paidBy) {
-        this.paidBy = paidBy;
-    }
+// --Commented out by Inspection START (26/12/2021, 23:19):
+//    public void setPaidBy(PersonEntry paidBy) {
+//        this.paidBy = paidBy;
+//    }
+// --Commented out by Inspection STOP (26/12/2021, 23:19)
 
     public TicketSplitMap getTicketSplitMap() {
         return ticketSplitMap;
     }
 
-    public void setTicketSplitMap(TicketSplitMap ticketSplitMap) {
-        this.ticketSplitMap = ticketSplitMap;
-    }
+// --Commented out by Inspection START (26/12/2021, 23:19):
+//    public void setTicketSplitMap(TicketSplitMap ticketSplitMap) {
+//        this.ticketSplitMap = ticketSplitMap;
+//    }
+// --Commented out by Inspection STOP (26/12/2021, 23:19)
 
     @Override
     public String toString() {
