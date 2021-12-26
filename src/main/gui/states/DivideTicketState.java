@@ -34,10 +34,6 @@ public class DivideTicketState extends State {
         DivideTicketState.entry = entry;
     }
 
-    public void init() {
-        super.init();
-    }
-
     @Override
     void setLayout() {
         pane.setLayout(new GridLayout(0, 2));

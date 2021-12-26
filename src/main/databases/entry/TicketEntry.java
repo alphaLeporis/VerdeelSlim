@@ -6,9 +6,9 @@ import static java.lang.Math.*;
 
 public abstract class TicketEntry extends DatabaseEntry {
     private final String ticketType;
-    private double price;
-    private PersonEntry paidBy;
-    private TicketSplitMap ticketSplitMap;
+    private final double price;
+    private final PersonEntry paidBy;
+    private final TicketSplitMap ticketSplitMap;
     private final PersonsDatabase personsDatabase;
 
     public TicketEntry(String name, String ticketType, double price, PersonEntry paidBy) {

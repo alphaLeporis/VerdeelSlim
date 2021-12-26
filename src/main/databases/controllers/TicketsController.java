@@ -26,9 +26,6 @@ public class TicketsController implements Controller<TicketEntry> {
     }
 
     @Override
-    public void modifyEntry(DatabaseEntry entry) {}
-
-    @Override
     public HashMap<String, TicketEntry> getAllEntries() {
         return db.getDB();
     }

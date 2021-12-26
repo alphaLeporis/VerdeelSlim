@@ -3,7 +3,6 @@ package gui;
 import javax.swing.*;
 
 public class Display {
-    private JFrame frame;
 
     public Display() {
         Interface GUI = new Interface();

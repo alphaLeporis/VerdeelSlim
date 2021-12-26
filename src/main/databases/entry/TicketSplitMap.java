@@ -8,11 +8,10 @@ import static java.lang.Math.random;
 import static java.lang.Math.round;
 
 public class TicketSplitMap {
-    private boolean isPercentage;
-    private HashMap<String, Double> splitMap;
+    private final HashMap<String, Double> splitMap;
 
     public TicketSplitMap() {
-        this.isPercentage = false;
+        boolean isPercentage = false;
         this.splitMap = new HashMap<>();
     }
 

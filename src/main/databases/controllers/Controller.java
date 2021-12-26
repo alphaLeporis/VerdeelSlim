@@ -9,6 +9,6 @@ public interface Controller<T>
 {
     void createEntry(DatabaseEntry entry);
     void removeEntry(DatabaseEntry entry);
-    void modifyEntry(DatabaseEntry entry);
+
     HashMap<String, T> getAllEntries();
 }

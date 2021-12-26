@@ -58,9 +58,9 @@ public class BillCalculator {
                 continue;
             }
             double debtAmount = Math.round((abs(netAmount1)-abs(netAmount2)) * 100.0) / 100.0;
-            String name1 = personsDatabase.get(personsDatabase.size()-1).getName(); //Person with lowest debt
-            String name2 = personsDatabase.get(0).getName(); //Person with highest debt
-            if(debtAmount < 0.0){ //Person with most debt has more debt than person with least debt has to receive
+            String name1 = personsDatabase.get(personsDatabase.size()-1).getName(); //Person with the lowest debt
+            String name2 = personsDatabase.get(0).getName(); //Person with the highest debt
+            if(debtAmount < 0.0){ //Person with most debt has more debt than person with the least debt has to receive
                 debts.get(name2).add(Map.entry(name1,numberRounder(-1*abs(netAmount1))));
                 debts.get(name1).add(Map.entry(name2, numberRounder(abs(netAmount1))));
                 personsDatabase.get(personsDatabase.size()-1).setNetAmount(0);
