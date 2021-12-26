@@ -6,7 +6,7 @@ import databases.entry.PersonEntry;
 import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 
-public class PersonsDatabase extends Database {
+public class PersonsDatabase extends Database<PersonEntry> {
     private static final CSVHandler<PersonEntry> handler;
     private static final PersonsDatabase instance;
     static {

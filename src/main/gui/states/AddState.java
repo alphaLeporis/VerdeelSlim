@@ -1,6 +1,5 @@
 package gui.states;
 
-import databases.Database;
 import databases.PersonsDatabase;
 import databases.controllers.PersonsController;
 import databases.entry.PersonEntry;
@@ -87,9 +86,9 @@ public class AddState extends State{
 
     // Todo: deze code is heel brak :)
     private static String[] getAllUsers() {
-        Database personDB = PersonsDatabase.getInstance();
+        PersonsDatabase personDB = PersonsDatabase.getInstance();
         HashMap<String, PersonEntry>  persons = new PersonsController(personDB).getAllEntries();
-        List<String> list = new ArrayList<String>(persons.keySet());
+        List<String> list = new ArrayList<>(persons.keySet());
         System.out.println(list);
         String[] sa = {};
         sa = list.toArray(sa);
@@ -97,7 +96,7 @@ public class AddState extends State{
     }
 
     public static PersonEntry getUser(String name) {
-        Database personDB = PersonsDatabase.getInstance();
+        PersonsDatabase personDB = PersonsDatabase.getInstance();
         HashMap<String, PersonEntry>  persons = new PersonsController(personDB).getAllEntries();
         return persons.get(name);
     }

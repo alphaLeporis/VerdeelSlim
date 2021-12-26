@@ -1,6 +1,5 @@
 package gui.states;
 
-import databases.Database;
 import databases.PersonsDatabase;
 import databases.controllers.PersonsController;
 import databases.entry.PersonEntry;
@@ -23,7 +22,7 @@ public class UserState extends State {
     }
 
     private HashMap<String, PersonEntry> getDatabaseEntries() {
-        Database personDB = PersonsDatabase.getInstance();
+        PersonsDatabase personDB = PersonsDatabase.getInstance();
         return new PersonsController(personDB).getAllEntries();
     }
 

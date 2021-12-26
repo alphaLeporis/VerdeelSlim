@@ -1,7 +1,6 @@
 package observers.gui;
 
 import databases.TicketsDatabase;
-import databases.controllers.Controller;
 import databases.controllers.TicketsController;
 import gui.states.*;
 
@@ -69,7 +68,7 @@ public class DivideTicketStateObserver extends StateObserver{
             }
 
             if (DivideTicketState.entry.checkPriceIsPaid()) {
-                Controller ticketsController = new TicketsController(TicketsDatabase.getInstance());
+                TicketsController ticketsController = new TicketsController(TicketsDatabase.getInstance());
                 ticketsController.createEntry(DivideTicketState.entry);
 
                 DivideTicketState.inter.changeState(new TicketState(DivideTicketState.inter));

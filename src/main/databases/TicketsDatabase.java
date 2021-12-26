@@ -7,7 +7,7 @@ import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 
 
-public class TicketsDatabase extends Database {
+public class TicketsDatabase extends Database<TicketEntry> {
     private static final CSVHandler<TicketEntry> handler;
     private static final TicketsDatabase instance;
     static {

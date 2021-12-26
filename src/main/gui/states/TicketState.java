@@ -1,6 +1,5 @@
 package gui.states;
 
-import databases.Database;
 import databases.TicketsDatabase;
 import databases.controllers.TicketsController;
 import databases.entry.TicketEntry;
@@ -23,7 +22,7 @@ public class TicketState extends State {
     }
 
     private HashMap<String, TicketEntry> getDatabaseEntries() {
-        Database ticketDB = TicketsDatabase.getInstance();
+        TicketsDatabase ticketDB = TicketsDatabase.getInstance();
         return new TicketsController(ticketDB).getAllEntries();
     }
 

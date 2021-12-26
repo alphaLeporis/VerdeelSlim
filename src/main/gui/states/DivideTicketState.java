@@ -1,6 +1,5 @@
 package gui.states;
 
-import databases.Database;
 import databases.PersonsDatabase;
 import databases.controllers.PersonsController;
 import databases.entry.PersonEntry;
@@ -17,7 +16,7 @@ import java.util.Map;
 public class DivideTicketState extends State {
     private final DivideTicketStateObserver observer = new DivideTicketStateObserver(this);
     public static TicketEntry entry;
-    public static final HashMap<String, JTextField> textEntries = new HashMap<String, JTextField>();
+    public static final HashMap<String, JTextField> textEntries = new HashMap<>();
     private final HashMap<String, PersonEntry> allPersons = getDatabaseEntries();
     public static boolean Even = true;
 
@@ -92,12 +91,12 @@ public class DivideTicketState extends State {
     }
 
     private HashMap<String, PersonEntry> getDatabaseEntries() {
-        Database personDB = PersonsDatabase.getInstance();
+        PersonsDatabase personDB = PersonsDatabase.getInstance();
         return new PersonsController(personDB).getAllEntries();
     }
 
     public static PersonEntry getUser(String name) {
-        Database personDB = PersonsDatabase.getInstance();
+        PersonsDatabase personDB = PersonsDatabase.getInstance();
         HashMap<String, PersonEntry>  persons = new PersonsController(personDB).getAllEntries();
         return persons.get(name);
     }
