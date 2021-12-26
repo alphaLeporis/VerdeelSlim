@@ -27,7 +27,7 @@ public class DivideTicketState extends State {
     public static JRadioButton option2;
     public static JTextArea yourSum;
 
-    public static double finalSum = 0;
+    public static double finalSum;
 
     public DivideTicketState(Interface inter, TicketEntry entry) {
         super(inter);
@@ -41,6 +41,9 @@ public class DivideTicketState extends State {
 
     @Override
     void createUIElements() {
+        // Reset sum value
+        finalSum = 0;
+
         // Create buttons
         ButtonGroup group = new ButtonGroup();
         group.add(option1);

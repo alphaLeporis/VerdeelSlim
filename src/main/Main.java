@@ -14,6 +14,12 @@ import java.util.Map;
 
 public class Main
 {
+
+    //ToDo: Toevoegen van een db observer -> opslagen
+    //ToDo: Nakijken of we al de factory patterns hebben
+    //ToDo: Tests schrijven
+
+
     public static void main(String[] args)
     {
         Main main = new Main();
