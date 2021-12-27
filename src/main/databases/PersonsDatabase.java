@@ -46,6 +46,7 @@ public class PersonsDatabase extends Database<PersonEntry> {
     @Override
     public HashMap<String, PersonEntry> getDB() {
         return this.db;
+
     }
 
     @Override
