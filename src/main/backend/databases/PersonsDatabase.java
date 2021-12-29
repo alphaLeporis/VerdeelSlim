@@ -25,7 +25,7 @@ public class PersonsDatabase extends Database<PersonEntry> {
 
     @Override
     public void addEntry(PersonEntry entry) {
-        this.db.put(entry.getName(), (PersonEntry) entry);
+        this.db.put(entry.getName(), entry);
         changes.firePropertyChange("PersonsDB-add", null, this.db);
     }
 

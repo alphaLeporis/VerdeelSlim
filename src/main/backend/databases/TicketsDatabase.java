@@ -31,7 +31,7 @@ public class TicketsDatabase extends Database<TicketEntry>{
 
     @Override
     public void addEntry(TicketEntry entry) {
-        this.db.put(entry.getName(), (TicketEntry) entry);
+        this.db.put(entry.getName(), entry);
         debtController.createEntry(entry);
         changes.firePropertyChange("TicketsDB-add", null, this.db);
     }
@@ -49,20 +49,4 @@ public class TicketsDatabase extends Database<TicketEntry>{
     }
 
 
-/*    public void addDebtsToPersons(TicketEntry ticket){
-        PersonsDatabase personsDatabase = PersonsDatabase.getInstance();
-        PersonsDatabase.getInstance().getDB().get(ticket.getPaidBy().getName()).addAmountPaid(ticket.getPrice());
-        for (String name : ticket.getTicketSplitMap().getSplitMap().keySet()) {
-            personsDatabase.getDB().get(name).addAmountBorrowed(ticket.getTicketSplitMap().getSplitMap().get(name));
-        }
-    }
-
-    public void removeDebtsFromPersons(TicketEntry ticket){
-        PersonsDatabase personsDatabase = PersonsDatabase.getInstance();
-        personsDatabase.getDB().get(ticket.getPaidBy().getName()).reduceAmountPaid(ticket.getPrice());
-        for (String name : ticket.getTicketSplitMap().getSplitMap().keySet()) {
-            personsDatabase.getDB().get(name).reduceAmountBorrowed(ticket.getTicketSplitMap().getSplitMap().get(name));
-        }
-
-    }*/
 }

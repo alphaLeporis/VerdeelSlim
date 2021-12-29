@@ -17,7 +17,7 @@ public abstract class Database<T>
 
     public HashMap<String, T>  getDB() {
         return this.db;
-    };
+    }
 
     public abstract void addEntry(T entry);
     public abstract void removeEntry(T entry);

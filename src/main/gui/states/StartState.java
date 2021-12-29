@@ -1,14 +1,9 @@
 package gui.states;
 
-import com.vdurmont.emoji.EmojiParser;
 import gui.Interface;
-import observers.database.RecalculateDebtObserver;
 import observers.gui.StartStateObserver;
 
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.beans.PropertyChangeListener;
-import java.util.Arrays;
 
 public class StartState extends State {
     private final StartStateObserver observer = new StartStateObserver();
