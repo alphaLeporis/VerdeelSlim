@@ -2,21 +2,29 @@ package databases;
 
 
 import databases.entry.DatabaseEntry;
+import databases.entry.PersonEntry;
 
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.HashMap;
 
 public abstract class Database<T>
 {
-    public Database() {}
+    protected final HashMap<String, T> db;
+    protected final PropertyChangeSupport changes;
 
-    public abstract void addEntry(DatabaseEntry entry);
-    public abstract void removeEntry(DatabaseEntry entry);
-    public abstract DatabaseEntry getEntry(String name);
+    public Database() {
+        this.db = new HashMap<>();
+        this.changes = new PropertyChangeSupport(this);
+        addObservers();
+    }
 
-    public abstract HashMap<String, T>  getDB();
+    public HashMap<String, T>  getDB() {
+        return this.db;
+    };
 
-    public abstract void addListeners(PropertyChangeListener observer);
-
-    abstract void save();
+    public abstract void addEntry(T entry);
+    public abstract void removeEntry(T entry);
+    public abstract T getEntry(String name);
+    public abstract void addObservers();
 }

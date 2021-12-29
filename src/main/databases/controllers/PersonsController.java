@@ -17,12 +17,12 @@ public class PersonsController implements Controller<PersonEntry>
     }
 
     @Override
-    public void createEntry(DatabaseEntry entry) {
+    public void createEntry(PersonEntry entry) {
         this.db.addEntry(entry);
     }
 
     @Override
-    public void removeEntry(DatabaseEntry entry) {
+    public void removeEntry(PersonEntry entry) {
         this.db.removeEntry(entry);
     }
 

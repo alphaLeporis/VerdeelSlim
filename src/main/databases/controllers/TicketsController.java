@@ -16,12 +16,12 @@ public class TicketsController implements Controller<TicketEntry> {
     }
 
     @Override
-    public void createEntry(DatabaseEntry entry) {
+    public void createEntry(TicketEntry entry) {
         this.db.addEntry(entry);
     }
 
     @Override
-    public void removeEntry(DatabaseEntry entry) {
+    public void removeEntry(TicketEntry entry) {
         this.db.removeEntry(entry);
     }
 

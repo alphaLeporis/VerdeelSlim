@@ -19,12 +19,6 @@ public class CalculateState extends State {
         super(inter);
     }
 
-    private HashMap<String, ArrayList<Map.Entry<String, Double>>> getBillDebts() {
-        BillCalculator billCalculator = new BillCalculator();
-        billCalculator.calculateBill();
-        return billCalculator.getDebtsList();
-    }
-
     @Override
     void setLayout() {
         pane.setLayout(new GridLayout(0, 1));
@@ -34,7 +28,7 @@ public class CalculateState extends State {
     void createUIElements() {
         goBack = new Button("Keer terug");
 
-        for(Map.Entry<String, ArrayList<Map.Entry<String, Double>>> entry: getBillDebts().entrySet()){
+        for(Map.Entry<String, ArrayList<Map.Entry<String, Double>>> entry: BillCalculator.getInstance().getDebtsList().entrySet()){
             for(Map.Entry<String, Double> set: entry.getValue()){
                 System.out.println(entry.getKey() + " gets/gives  to  " + set.getKey() + " amount: " + set.getValue());
                 pane.add(new debtLayout(entry.getKey(), set.getKey(), set.getValue()).draw());

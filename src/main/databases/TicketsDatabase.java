@@ -1,85 +1,69 @@
 package databases;
 
+import databases.controllers.DebtController;
 import databases.entry.DatabaseEntry;
 import databases.entry.TicketEntry;
-
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
-import java.util.HashMap;
+import observers.database.RecalculateDebtObserver;
+import observers.database.SaveDatabaseObserver;
 
 
 public class TicketsDatabase extends Database<TicketEntry>{
-    private static final CSVHandler<TicketEntry> handler;
     private static final TicketsDatabase instance;
+    private final DebtController debtController;
+
     static {
         instance = new TicketsDatabase();
-        handler = new CSVHandler<>();
+    }
+
+    public TicketsDatabase() {
+        super();
+        debtController = new DebtController();
     }
 
     public static TicketsDatabase getInstance() {
         return instance;
     }
 
-    private final HashMap<String, TicketEntry> db;
-
-    private final PropertyChangeSupport changes = new PropertyChangeSupport(this);
-
-    public TicketsDatabase() {
-        this.db = new HashMap<>();
+    @Override
+    public void addObservers() {
+        changes.addPropertyChangeListener(new SaveDatabaseObserver());
+        changes.addPropertyChangeListener(new RecalculateDebtObserver());
     }
 
     @Override
-    public void addEntry(DatabaseEntry entry) {
+    public void addEntry(TicketEntry entry) {
         this.db.put(entry.getName(), (TicketEntry) entry);
-        this.addDebstToPersons((TicketEntry) entry);
-        save();
+        debtController.createEntry(entry);
+        changes.firePropertyChange("TicketsDB-add", null, this.db);
     }
 
     @Override
-    public void removeEntry(DatabaseEntry entry) {
-        this.removeDebstFromPersons((TicketEntry) entry);
+    public void removeEntry(TicketEntry entry) {
+        debtController.removeEntry(entry);
         this.db.remove(entry.getName());
-        save();
+        changes.firePropertyChange("TicketsDB-rm", null, this.db);
     }
 
     @Override
-    public DatabaseEntry getEntry(String name) {
+    public TicketEntry getEntry(String name) {
         return this.db.get(name);
     }
 
-    @Override
-    public HashMap<String, TicketEntry> getDB() {
-        return this.db;
-    }
 
-    @Override
-    public void addListeners(PropertyChangeListener observer) {
-        this.changes.addPropertyChangeListener(observer);
-    }
-
-    @Override
-    void save() {
-        try {
-            handler.writeHashMapToCsv(this.db);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void addDebstToPersons(TicketEntry ticket){
+/*    public void addDebtsToPersons(TicketEntry ticket){
         PersonsDatabase personsDatabase = PersonsDatabase.getInstance();
-        personsDatabase.getDB().get(ticket.getPaidBy().getName()).addAmountPaid(ticket.getPrice());
+        PersonsDatabase.getInstance().getDB().get(ticket.getPaidBy().getName()).addAmountPaid(ticket.getPrice());
         for (String name : ticket.getTicketSplitMap().getSplitMap().keySet()) {
             personsDatabase.getDB().get(name).addAmountBorrowed(ticket.getTicketSplitMap().getSplitMap().get(name));
         }
     }
 
-    public void removeDebstFromPersons(TicketEntry ticket){
+    public void removeDebtsFromPersons(TicketEntry ticket){
         PersonsDatabase personsDatabase = PersonsDatabase.getInstance();
         personsDatabase.getDB().get(ticket.getPaidBy().getName()).reduceAmountPaid(ticket.getPrice());
         for (String name : ticket.getTicketSplitMap().getSplitMap().keySet()) {
             personsDatabase.getDB().get(name).reduceAmountBorrowed(ticket.getTicketSplitMap().getSplitMap().get(name));
         }
 
-    }
+    }*/
 }
