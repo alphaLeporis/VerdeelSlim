@@ -53,7 +53,7 @@ public class TicketsDatabase extends Database<TicketEntry>{
     }
 
     @Override
-    void addListeners(PropertyChangeListener observer) {
+    public void addListeners(PropertyChangeListener observer) {
         this.changes.addPropertyChangeListener(observer);
     }
 

@@ -49,7 +49,7 @@ public class PersonsDatabase extends Database<PersonEntry> {
     }
 
     @Override
-    void addListeners(PropertyChangeListener observer) {
+    public void addListeners(PropertyChangeListener observer) {
     }
 
     @Override

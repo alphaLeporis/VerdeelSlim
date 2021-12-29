@@ -1,5 +1,6 @@
 import calculator.BillCalculator;
 import databases.Database;
+import databases.DatabaseObserver;
 import databases.PersonsDatabase;
 import databases.TicketsDatabase;
 import databases.controllers.PersonsController;
@@ -34,6 +35,8 @@ public class Main
         Database personDatabase = PersonsDatabase.getInstance();
         PersonsController personsController = new PersonsController((PersonsDatabase) personDatabase);
         Database ticketDatabase = TicketsDatabase.getInstance();
+        DatabaseObserver databaseObserver = new DatabaseObserver();
+        ticketDatabase.addListeners(databaseObserver);
         TicketsController ticketsController = new TicketsController((TicketsDatabase) ticketDatabase);
         TicketFactory ticketFactory = new TicketFactory();
 

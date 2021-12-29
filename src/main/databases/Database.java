@@ -16,7 +16,7 @@ public abstract class Database<T>
 
     public abstract HashMap<String, T>  getDB();
 
-    abstract void addListeners(PropertyChangeListener observer);
+    public abstract void addListeners(PropertyChangeListener observer);
 
     abstract void save();
 }
