@@ -1,16 +1,16 @@
 package databases.controllers;
 
-import databases.Database;
+import databases.TicketsDatabase;
 import databases.entry.DatabaseEntry;
 import databases.entry.TicketEntry;
 
 import java.util.HashMap;
 
-public class TicketsController implements Controller{
+public class TicketsController implements Controller<TicketEntry> {
 
-    private Database db;
+    private final TicketsDatabase db;
 
-    public TicketsController(Database db)
+    public TicketsController(TicketsDatabase db)
     {
         this.db = db;
     }
@@ -24,9 +24,6 @@ public class TicketsController implements Controller{
     public void removeEntry(DatabaseEntry entry) {
         this.db.removeEntry(entry);
     }
-
-    @Override
-    public void modifyEntry(DatabaseEntry entry) {}
 
     @Override
     public HashMap<String, TicketEntry> getAllEntries() {

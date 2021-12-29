@@ -10,6 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="powermock" target="1.6" />
       <module name="VerdeelSlim" target="11" />
     </bytecodeTargetLevel>
   </component>

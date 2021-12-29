@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class userLayout {
-    String name;
+    final String name;
     public userLayout(String name) {
         this.name = name;
     }

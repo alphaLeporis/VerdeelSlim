@@ -9,20 +9,17 @@ public class TicketFactory {
     }
 
     public TicketEntry getTicket(String name, String ticketType, double price, PersonEntry paidBy){
-        if(ticketType.equals("Accomodation")){
-            return new AccomodationTicket(name, price, paidBy);
-        }
-        else if (ticketType.equals("Amusement")){
-            return new AmusementTicket(name, price, paidBy);
-        }
-        else if (ticketType.equals("Restaurant")){
-            return new RestaurantTicket(name, price, paidBy);
-        }
-        else if (ticketType.equals("Transportation")){
-            return new TransportationTicket(name, price, paidBy);
-        }
-        else{
-            return new GenericTicket(name, price, paidBy);
+        switch (ticketType) {
+            case "Accomodation":
+                return new AccomodationTicket(name, price, paidBy);
+            case "Amusement":
+                return new AmusementTicket(name, price, paidBy);
+            case "Restaurant":
+                return new RestaurantTicket(name, price, paidBy);
+            case "Transportation":
+                return new TransportationTicket(name, price, paidBy);
+            default:
+                return new GenericTicket(name, price, paidBy);
         }
     }
 }

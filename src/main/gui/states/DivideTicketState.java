@@ -1,120 +1,103 @@
 package gui.states;
 
-import databases.Database;
 import databases.PersonsDatabase;
-import databases.TicketsDatabase;
-import databases.controllers.Controller;
 import databases.controllers.PersonsController;
-import databases.controllers.TicketsController;
 import databases.entry.PersonEntry;
 import databases.entry.TicketEntry;
-import databases.entry.tickets.TicketFactory;
 import gui.Interface;
 import gui.components.userLayout;
+import observers.gui.DivideTicketStateObserver;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.util.HashMap;
 import java.util.Map;
 
 public class DivideTicketState extends State {
-    private final Interface inter;
-    private final Container pane;
-    private final TicketEntry entry;
-    private HashMap<String, JTextField> textEntries = new HashMap();
-    private boolean Even = true;
+    private final DivideTicketStateObserver observer = new DivideTicketStateObserver(this);
+    public static TicketEntry entry;
+    public static final HashMap<String, JTextField> textEntries = new HashMap<>();
+    private final HashMap<String, PersonEntry> allPersons = getDatabaseEntries();
+    public static boolean Even = true;
 
-    private Button addTicket = new Button("Voeg ticket toe");
-    private Button goBack = new Button("Keer terug");
+    public static Button goBack;
+    public static Button addTicket;
+    public static Button checkSum;
+    public static JRadioButton option1;
+    public static JRadioButton option2;
+    public static JTextArea yourSum;
 
-    private JRadioButton option1 = new JRadioButton("Even verdeeld");
-    private JRadioButton option2 = new JRadioButton("Oneven verdeeld");
+    public static double finalSum;
 
     public DivideTicketState(Interface inter, TicketEntry entry) {
-        this.inter = inter;
-        this.pane = inter.getPane();
-        this.entry = entry;
+        super(inter);
+        DivideTicketState.entry = entry;
     }
 
-    public void init() {
-        textEntries = new HashMap();
-        HashMap<String, PersonEntry> allPersons = getDatabaseEntries();
+    @Override
+    void setLayout() {
         pane.setLayout(new GridLayout(0, 2));
+    }
+
+    @Override
+    void createUIElements() {
+        // Reset sum value
+        finalSum = 0;
+
+        // Create buttons
         ButtonGroup group = new ButtonGroup();
         group.add(option1);
         group.add(option2);
+
+        addTicket = new Button("Voeg ticket toe");
+        goBack = new Button("Keer terug");
+        checkSum = new Button("Kijk na");
+        option1 = new JRadioButton("Even verdeeld");
+        option2 = new JRadioButton("Oneven verdeeld");
+        yourSum = new JTextArea();
+
+        // Draw first buttons
         pane.add(option1);
         pane.add(option2);
 
-
+        // Draw all persons
         for (Map.Entry<String, PersonEntry> set : allPersons.entrySet()) {
             pane.add(new userLayout(set.getKey()).draw());
             JTextField text = new JTextField(String.valueOf(entry.getTicketSplitMap().getName(set.getKey())));
+            finalSum = finalSum + entry.getTicketSplitMap().getName(set.getKey());
             text.setEditable(!Even);
+            text.addActionListener(observer);
             textEntries.put(set.getKey(), text);
             pane.add(text);
         }
+        yourSum.setEditable(false);
+        yourSum.setText("Totaal prijs: " + finalSum);
 
-        goBack.addActionListener(this);
-        addTicket.addActionListener(this);
-        option1.addActionListener(this);
-        option2.addActionListener(this);
+        // Draw rest of buttons on pane
+        pane.add(checkSum);
+        pane.add(yourSum);
         pane.add(goBack);
         pane.add(addTicket);
     }
 
+    @Override
+    void initActionListener() {
+        goBack.addActionListener(observer);
+        checkSum.addActionListener(observer);
+        addTicket.addActionListener(observer);
+        option1.addActionListener(observer);
+        option2.addActionListener(observer);
+    }
+
     private HashMap<String, PersonEntry> getDatabaseEntries() {
-        Database personDB = PersonsDatabase.getInstance();
+        PersonsDatabase personDB = PersonsDatabase.getInstance();
         return new PersonsController(personDB).getAllEntries();
     }
 
-    private PersonEntry getUser(String name) {
-        Database personDB = PersonsDatabase.getInstance();
+    public static PersonEntry getUser(String name) {
+        PersonsDatabase personDB = PersonsDatabase.getInstance();
         HashMap<String, PersonEntry>  persons = new PersonsController(personDB).getAllEntries();
-        return (PersonEntry) persons.get(name);
+        return persons.get(name);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == addTicket) {
-            for (Map.Entry<String, JTextField> set : textEntries.entrySet()) {
-                try {
-                    double d = Double.parseDouble(set.getValue().getText());
-                    entry.setAmount(getUser(set.getKey()), d);
-                } catch (NumberFormatException e2) {
-                    JOptionPane.showMessageDialog(null, "Dit is geen geldige prijs!");
-                    return;
-                }
-            }
-
-            if (entry.checkPriceIsPaid()) {
-                Controller ticketsController = new TicketsController(TicketsDatabase.getInstance());
-                ticketsController.createEntry(entry);
-
-                inter.changeState(new TicketState(this.inter));
-            } else {
-                JOptionPane.showMessageDialog(null, "Oei kijk je som na!");
-            }
-
-        }
-
-        if (e.getSource() == goBack) {
-            inter.changeState(new AddState(this.inter, this.entry));
-        }
-
-        if (e.getSource() == option1) {
-            pane.removeAll();
-            Even = true;
-            init();
-            inter.revalidate();
-        }
-
-        if (e.getSource() == option2) {
-            pane.removeAll();
-            Even = false;
-            init();
-            inter.revalidate();
-        }
-    }
 }

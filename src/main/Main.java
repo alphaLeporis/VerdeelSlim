@@ -32,9 +32,9 @@ public class Main
     public void run()
     {
         Database personDatabase = PersonsDatabase.getInstance();
-        PersonsController personsController = new PersonsController(personDatabase);
+        PersonsController personsController = new PersonsController((PersonsDatabase) personDatabase);
         Database ticketDatabase = TicketsDatabase.getInstance();
-        TicketsController ticketsController = new TicketsController(ticketDatabase);
+        TicketsController ticketsController = new TicketsController((TicketsDatabase) ticketDatabase);
         TicketFactory ticketFactory = new TicketFactory();
 
         PersonEntry person1 = new PersonEntry("Bob");

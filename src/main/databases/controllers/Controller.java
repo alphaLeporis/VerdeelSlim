@@ -7,8 +7,8 @@ import java.util.HashMap;
 
 public interface Controller<T>
 {
-    public void createEntry(DatabaseEntry entry);
-    public void removeEntry(DatabaseEntry entry);
-    public void modifyEntry(DatabaseEntry entry);
-    public HashMap<String, T> getAllEntries();
+    void createEntry(DatabaseEntry entry);
+    void removeEntry(DatabaseEntry entry);
+
+    HashMap<String, T> getAllEntries();
 }

@@ -5,11 +5,11 @@ import databases.PersonsDatabase;
 import static java.lang.Math.*;
 
 public abstract class TicketEntry extends DatabaseEntry {
-    private String ticketType;
-    private double price;
-    private PersonEntry paidBy;
-    private TicketSplitMap ticketSplitMap;
-    private PersonsDatabase personsDatabase;
+    private final String ticketType;
+    private final double price;
+    private final PersonEntry paidBy;
+    private final TicketSplitMap ticketSplitMap;
+    private final PersonsDatabase personsDatabase;
 
     public TicketEntry(String name, String ticketType, double price, PersonEntry paidBy) {
         super(name);
@@ -43,9 +43,11 @@ public abstract class TicketEntry extends DatabaseEntry {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
+// --Commented out by Inspection START (26/12/2021, 23:19):
+//    public void setPrice(double price) {
+//        this.price = price;
+//    }
+// --Commented out by Inspection STOP (26/12/2021, 23:19)
 
     public PersonEntry getPaidBy() {
         return paidBy;
@@ -63,15 +65,30 @@ public abstract class TicketEntry extends DatabaseEntry {
         return(abs(sum-this.price) < 0.00001);
     }
 
-    public void setPaidBy(PersonEntry paidBy) {
-        this.paidBy = paidBy;
-    }
+// --Commented out by Inspection START (26/12/2021, 23:19):
+//    public void setPaidBy(PersonEntry paidBy) {
+//        this.paidBy = paidBy;
+//    }
+// --Commented out by Inspection STOP (26/12/2021, 23:19)
 
     public TicketSplitMap getTicketSplitMap() {
         return ticketSplitMap;
     }
 
-    public void setTicketSplitMap(TicketSplitMap ticketSplitMap) {
-        this.ticketSplitMap = ticketSplitMap;
+// --Commented out by Inspection START (26/12/2021, 23:19):
+//    public void setTicketSplitMap(TicketSplitMap ticketSplitMap) {
+//        this.ticketSplitMap = ticketSplitMap;
+//    }
+// --Commented out by Inspection STOP (26/12/2021, 23:19)
+
+    @Override
+    public String toString() {
+        return "TicketEntry{" +
+                "name='" + name + '\'' +
+                ", ticketType='" + ticketType + '\'' +
+                ", price=" + price +
+                ", paidBy=" + paidBy +
+                ", ticketSplitMap=" + ticketSplitMap +
+                '}';
     }
 }

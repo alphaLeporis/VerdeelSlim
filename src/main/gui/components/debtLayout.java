@@ -4,9 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class debtLayout {
-    String p1;
-    String p2;
-    double price;
+    final String p1;
+    final String p2;
+    final double price;
     public debtLayout(String p1, String p2, double price) {
         this.p1 = p1;
         this.p2 = p2;

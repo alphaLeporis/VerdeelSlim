@@ -9,29 +9,22 @@ import static java.lang.Math.random;
 import static java.lang.Math.round;
 
 public class TicketSplitMap {
-    private boolean isPercentage;
-    private HashMap<String, Double> splitMap;
+    private final HashMap<String, Double> splitMap;
 
     public TicketSplitMap() {
-        this.isPercentage = false;
         this.splitMap = new HashMap<>();
     }
 
-    public boolean isPercentage() {
-        return isPercentage;
-    }
-
-    public void setPercentage(boolean percentage) {
-        isPercentage = percentage;
-    }
 
     public HashMap<String, Double> getSplitMap() {
         return splitMap;
     }
 
-    public void setSplitMap(HashMap<String, Double> splitMap) {
-        this.splitMap = splitMap;
-    }
+// --Commented out by Inspection START (26/12/2021, 23:19):
+//    public void setSplitMap(HashMap<String, Double> splitMap) {
+//        this.splitMap = splitMap;
+//    }
+// --Commented out by Inspection STOP (26/12/2021, 23:19)
 
     public void addName(String name, double value){
         this.splitMap.put(name, value);

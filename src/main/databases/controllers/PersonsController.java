@@ -1,6 +1,5 @@
 package databases.controllers;
 
-import databases.Database;
 import databases.PersonsDatabase;
 import databases.entry.DatabaseEntry;
 import databases.entry.PersonEntry;
@@ -8,13 +7,13 @@ import databases.entry.PersonEntry;
 
 import java.util.HashMap;
 
-public class PersonsController implements Controller
+public class PersonsController implements Controller<PersonEntry>
 {
-    private PersonsDatabase db;
+    private final PersonsDatabase db;
 
-    public PersonsController(Database db)
+    public PersonsController(PersonsDatabase db)
     {
-        this.db = (PersonsDatabase) db;
+        this.db = db;
     }
 
     @Override
@@ -26,9 +25,6 @@ public class PersonsController implements Controller
     public void removeEntry(DatabaseEntry entry) {
         this.db.removeEntry(entry);
     }
-
-    @Override
-    public void modifyEntry(DatabaseEntry entry) {}
 
     @Override
     public HashMap<String, PersonEntry> getAllEntries() {

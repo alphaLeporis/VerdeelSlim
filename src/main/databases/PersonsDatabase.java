@@ -6,11 +6,13 @@ import databases.entry.PersonEntry;
 import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 
-public class PersonsDatabase extends Database {
-
-    private static PersonsDatabase instance;
+public class PersonsDatabase extends Database<PersonEntry> {
+    private static final CSVHandler<PersonEntry> handler;
+    private static final PersonsDatabase instance;
     static {
         instance = new PersonsDatabase();
+        handler = new CSVHandler<>();
+        System.out.println("DB started");
     }
 
     public static PersonsDatabase getInstance() {
@@ -27,11 +29,13 @@ public class PersonsDatabase extends Database {
     @Override
     public void addEntry(DatabaseEntry entry) {
         this.db.put(entry.getName(), (PersonEntry) entry);
+        save();
     }
 
     @Override
     public void removeEntry(DatabaseEntry entry) {
         this.db.remove(entry.getName());
+        save();
     }
 
     @Override
@@ -46,5 +50,14 @@ public class PersonsDatabase extends Database {
 
     @Override
     void addListeners(PropertyChangeListener observer) {
+    }
+
+    @Override
+    void save() {
+        try {
+            handler.writeHashMapToCsv(this.db);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

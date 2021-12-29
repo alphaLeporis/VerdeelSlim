@@ -42,4 +42,14 @@ public class PersonEntry extends DatabaseEntry {
         this.netAmount = this.amountPaid-this.amountBorrowed;
     }
 
+
+    @Override
+    public String toString() {
+        return "PersonEntry{" +
+                "name='" + name + '\'' +
+                ", amountPaid=" + amountPaid +
+                ", amountBorrowed=" + amountBorrowed +
+                ", netAmount=" + netAmount +
+                '}';
+    }
 }
