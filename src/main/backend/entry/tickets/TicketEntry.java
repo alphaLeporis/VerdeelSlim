@@ -1,6 +1,8 @@
-package databases.entry;
+package backend.entry.tickets;
 
-import databases.PersonsDatabase;
+import backend.databases.PersonsDatabase;
+import backend.entry.DatabaseEntry;
+import backend.entry.person.PersonEntry;
 
 import static java.lang.Math.*;
 

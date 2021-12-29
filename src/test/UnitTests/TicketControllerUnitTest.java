@@ -1,12 +1,12 @@
 package UnitTests;
 
-import databases.PersonsDatabase;
-import databases.TicketsDatabase;
-import databases.controllers.PersonsController;
-import databases.controllers.TicketsController;
-import databases.entry.PersonEntry;
-import databases.entry.TicketEntry;
-import databases.entry.tickets.TicketFactory;
+import backend.databases.PersonsDatabase;
+import backend.databases.TicketsDatabase;
+import backend.databases.controllers.PersonsController;
+import backend.databases.controllers.TicketsController;
+import backend.entry.person.PersonEntry;
+import backend.entry.tickets.TicketEntry;
+import backend.entry.tickets.TicketFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,11 +1,7 @@
-package databases;
+package backend.databases;
 
-import databases.entry.DatabaseEntry;
-import databases.entry.PersonEntry;
+import backend.entry.person.PersonEntry;
 import observers.database.SaveDatabaseObserver;
-
-import java.beans.PropertyChangeListener;
-import java.util.HashMap;
 
 public class PersonsDatabase extends Database<PersonEntry> {
     private static final PersonsDatabase instance;

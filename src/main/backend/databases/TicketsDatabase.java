@@ -1,8 +1,7 @@
-package databases;
+package backend.databases;
 
-import databases.controllers.DebtController;
-import databases.entry.DatabaseEntry;
-import databases.entry.TicketEntry;
+import backend.databases.controllers.DebtController;
+import backend.entry.tickets.TicketEntry;
 import observers.database.RecalculateDebtObserver;
 import observers.database.SaveDatabaseObserver;
 

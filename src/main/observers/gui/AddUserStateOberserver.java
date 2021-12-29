@@ -1,8 +1,8 @@
 package observers.gui;
 
-import databases.PersonsDatabase;
-import databases.controllers.PersonsController;
-import databases.entry.PersonEntry;
+import backend.databases.PersonsDatabase;
+import backend.databases.controllers.PersonsController;
+import backend.entry.person.PersonEntry;
 import gui.states.AddUserState;
 import gui.states.UserState;
 

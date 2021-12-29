@@ -1,12 +1,12 @@
-import calculator.BillCalculator;
-import databases.Database;
-import databases.PersonsDatabase;
-import databases.TicketsDatabase;
-import databases.controllers.PersonsController;
-import databases.controllers.TicketsController;
-import databases.entry.PersonEntry;
-import databases.entry.TicketEntry;
-import databases.entry.tickets.TicketFactory;
+import backend.calculator.BillCalculator;
+import backend.databases.Database;
+import backend.databases.PersonsDatabase;
+import backend.databases.TicketsDatabase;
+import backend.databases.controllers.PersonsController;
+import backend.databases.controllers.TicketsController;
+import backend.entry.person.PersonEntry;
+import backend.entry.tickets.TicketEntry;
+import backend.entry.tickets.TicketFactory;
 import gui.Display;
 
 import java.util.ArrayList;

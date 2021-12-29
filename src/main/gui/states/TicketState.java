@@ -1,8 +1,8 @@
 package gui.states;
 
-import databases.TicketsDatabase;
-import databases.controllers.TicketsController;
-import databases.entry.TicketEntry;
+import backend.databases.TicketsDatabase;
+import backend.databases.controllers.TicketsController;
+import backend.entry.tickets.TicketEntry;
 import gui.Interface;
 import gui.components.ticketLayout;
 import observers.gui.TicketStateObserver;

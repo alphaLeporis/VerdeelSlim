@@ -1,4 +1,4 @@
-package databases.entry;
+package backend.entry.tickets;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;

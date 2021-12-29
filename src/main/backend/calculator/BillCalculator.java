@@ -1,10 +1,8 @@
-package calculator;
+package backend.calculator;
 
-import databases.CSVHandler;
-import databases.PersonsDatabase;
-import databases.TicketsDatabase;
-import databases.entry.PersonEntry;
-import databases.entry.PersonEntryComparator;
+import backend.databases.PersonsDatabase;
+import backend.entry.person.PersonEntry;
+import backend.entry.person.PersonEntryComparator;
 
 import java.util.*;
 

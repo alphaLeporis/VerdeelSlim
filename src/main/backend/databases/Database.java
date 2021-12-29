@@ -1,10 +1,6 @@
-package databases;
+package backend.databases;
 
 
-import databases.entry.DatabaseEntry;
-import databases.entry.PersonEntry;
-
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.HashMap;
 

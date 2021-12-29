@@ -1,8 +1,7 @@
-package databases.controllers;
+package backend.databases.controllers;
 
-import databases.PersonsDatabase;
-import databases.entry.DatabaseEntry;
-import databases.entry.PersonEntry;
+import backend.databases.PersonsDatabase;
+import backend.entry.person.PersonEntry;
 
 
 import java.util.HashMap;

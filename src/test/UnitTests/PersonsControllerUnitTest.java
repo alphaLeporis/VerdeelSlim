@@ -1,8 +1,8 @@
 package UnitTests;
 
-import databases.PersonsDatabase;
-import databases.controllers.PersonsController;
-import databases.entry.PersonEntry;
+import backend.databases.PersonsDatabase;
+import backend.databases.controllers.PersonsController;
+import backend.entry.person.PersonEntry;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

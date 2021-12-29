@@ -1,6 +1,6 @@
-package databases.entry;
+package backend.entry.person;
 
-import java.util.Comparator;
+import backend.entry.DatabaseEntry;
 
 public class PersonEntry extends DatabaseEntry {
     private double amountPaid;

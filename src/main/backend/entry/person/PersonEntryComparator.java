@@ -1,4 +1,4 @@
-package databases.entry;
+package backend.entry.person;
 
 import java.util.Comparator;
 

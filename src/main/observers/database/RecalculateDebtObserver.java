@@ -1,6 +1,6 @@
 package observers.database;
 
-import calculator.BillCalculator;
+import backend.calculator.BillCalculator;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;

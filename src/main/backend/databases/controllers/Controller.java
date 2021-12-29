@@ -1,7 +1,5 @@
-package databases.controllers;
+package backend.databases.controllers;
 
-
-import databases.entry.DatabaseEntry;
 
 import java.util.HashMap;
 

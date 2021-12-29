@@ -1,4 +1,4 @@
-package databases.entry;
+package backend.entry;
 
 public abstract class DatabaseEntry {
     protected String name;

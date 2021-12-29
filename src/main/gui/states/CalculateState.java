@@ -1,13 +1,12 @@
 package gui.states;
 
-import calculator.BillCalculator;
+import backend.calculator.BillCalculator;
 import gui.Interface;
 import gui.components.debtLayout;
 import observers.gui.CalculateStateObserver;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class CalculateState extends State {

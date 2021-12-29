@@ -1,6 +1,6 @@
 package gui.components;
 
-import databases.entry.TicketEntry;
+import backend.entry.tickets.TicketEntry;
 
 import javax.swing.*;
 import java.awt.*;

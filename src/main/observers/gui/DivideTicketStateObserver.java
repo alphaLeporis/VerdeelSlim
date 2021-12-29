@@ -1,7 +1,7 @@
 package observers.gui;
 
-import databases.TicketsDatabase;
-import databases.controllers.TicketsController;
+import backend.databases.TicketsDatabase;
+import backend.databases.controllers.TicketsController;
 import gui.states.*;
 
 import javax.swing.*;

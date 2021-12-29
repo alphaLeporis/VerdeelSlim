@@ -1,6 +1,6 @@
 package observers.gui;
 
-import databases.entry.tickets.TicketFactory;
+import backend.entry.tickets.TicketFactory;
 import gui.states.AddState;
 import gui.states.DivideTicketState;
 import gui.states.StartState;
