@@ -12,7 +12,7 @@ public class StartStateObserver extends StateObserver{
         }
 
         if (e.getSource() == StartState.addTicket) {
-            StartState.inter.changeState(new AddState(StartState.inter));
+            StartState.inter.changeState(new AddTicketState(StartState.inter));
         }
 
         if (e.getSource() == StartState.lookTicket) {

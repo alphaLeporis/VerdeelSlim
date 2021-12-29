@@ -39,5 +39,6 @@ public class AddUserState extends State {
     void initActionListener() {
         nameUser.addActionListener(observer);
         addUser.addActionListener(observer);
+        goBack.addActionListener(observer);
     }
 }

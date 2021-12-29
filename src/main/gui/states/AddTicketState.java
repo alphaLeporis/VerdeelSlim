@@ -12,11 +12,11 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
-public class AddState extends State{
+public class AddTicketState extends State{
     private final AddStateObserver observer = new AddStateObserver();
     private TicketEntry entry;
 
-    public static final JComboBox<String> betaaldBox = new JComboBox<>(getAllUsers());
+    public static JComboBox<String> betaaldBox;
     private final JTextField betaaldBoxText = new JTextField();
     private final JTextField naamText = new JTextField();
     public static final JTextField naamTextInput = new JTextField();
@@ -28,11 +28,11 @@ public class AddState extends State{
     public static final Button addTicket = new Button("Verdeel");
     public static final Button goBack = new Button("Keer terug");
 
-    public AddState(Interface inter) {
+    public AddTicketState(Interface inter) {
         super(inter);
     }
 
-    public AddState(Interface inter, TicketEntry entry) {
+    public AddTicketState(Interface inter, TicketEntry entry) {
         super(inter);
         this.entry = entry;
     }
@@ -44,6 +44,7 @@ public class AddState extends State{
 
     @Override
     void createUIElements() {
+        betaaldBox = new JComboBox<>(getAllUsers());
         betaaldBoxText.setText("Wie heeft betaald?");
         betaaldBoxText.setEditable(false);
         naamText.setText("Wat is de naam van het ticket?");

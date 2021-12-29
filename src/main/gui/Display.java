@@ -10,7 +10,7 @@ public class Display {
         System.out.println("VerdeelSlim GUI is starting...");
 
         // set window object size
-        GUI.setSize(450, 800);
+        GUI.setSize(450, 900);
         GUI.setTitle("VerdeelSlim");
         GUI.setVisible(true);
         GUI.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

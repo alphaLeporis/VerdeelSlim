@@ -12,7 +12,7 @@ public class TicketStateObserver extends StateObserver{
         }
 
         if (e.getSource() == TicketState.addTicket) {
-            TicketState.inter.changeState(new AddState(TicketState.inter));
+            TicketState.inter.changeState(new AddTicketState(TicketState.inter));
         }
     }
 }

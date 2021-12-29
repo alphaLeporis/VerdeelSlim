@@ -79,7 +79,7 @@ public class DivideTicketStateObserver extends StateObserver{
         }
 
         if (e.getSource() == DivideTicketState.goBack) {
-            DivideTicketState.inter.changeState(new AddState(DivideTicketState.inter, DivideTicketState.entry));
+            DivideTicketState.inter.changeState(new AddTicketState(DivideTicketState.inter, DivideTicketState.entry));
         }
 
         if (e.getSource() == DivideTicketState.option1) {

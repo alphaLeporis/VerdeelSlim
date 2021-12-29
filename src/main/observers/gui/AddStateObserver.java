@@ -1,7 +1,7 @@
 package observers.gui;
 
 import backend.entry.tickets.TicketFactory;
-import gui.states.AddState;
+import gui.states.AddTicketState;
 import gui.states.DivideTicketState;
 import gui.states.StartState;
 
@@ -14,14 +14,14 @@ import static java.lang.Thread.sleep;
 public class AddStateObserver extends StateObserver{
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == AddState.goBack) {
-            AddState.inter.changeState(new StartState(AddState.inter));
+        if (e.getSource() == AddTicketState.goBack) {
+            AddTicketState.inter.changeState(new StartState(AddTicketState.inter));
         }
 
-        if (e.getSource() == AddState.addTicket) {
-            System.out.println(AddState.ticketBox.getSelectedItem());
-            System.out.println(AddState.prijsTextInput.getText().length());
-            if (AddState.prijsTextInput.getText().length() == 0) {
+        if (e.getSource() == AddTicketState.addTicket) {
+            System.out.println(AddTicketState.ticketBox.getSelectedItem());
+            System.out.println(AddTicketState.prijsTextInput.getText().length());
+            if (AddTicketState.prijsTextInput.getText().length() == 0) {
                 try {
                     sleep(100);
                 } catch (InterruptedException ex) {
@@ -30,13 +30,13 @@ public class AddStateObserver extends StateObserver{
                 JOptionPane.showMessageDialog(null, "Vul een prijs in!");
             } else {
                 try {
-                    double d = Double.parseDouble(AddState.prijsTextInput.getText());
+                    double d = Double.parseDouble(AddTicketState.prijsTextInput.getText());
                     TicketFactory ticketFactory = new TicketFactory();
-                    AddState.inter.changeState(new DivideTicketState(AddState.inter,
-                                                                    ticketFactory.getTicket(AddState.naamTextInput.getText(),
-                                                                    (String) Objects.requireNonNull(AddState.ticketBox.getSelectedItem()),
+                    AddTicketState.inter.changeState(new DivideTicketState(AddTicketState.inter,
+                                                                    ticketFactory.getTicket(AddTicketState.naamTextInput.getText(),
+                                                                    (String) Objects.requireNonNull(AddTicketState.ticketBox.getSelectedItem()),
                                                                     d,
-                                                                    AddState.getUser((String) AddState.betaaldBox.getSelectedItem()))));
+                                                                    AddTicketState.getUser((String) AddTicketState.betaaldBox.getSelectedItem()))));
                 } catch (NumberFormatException e2) {
                     JOptionPane.showMessageDialog(null, "Dit is geen geldige prijs!");
                 }
