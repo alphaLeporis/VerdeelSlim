@@ -4,10 +4,11 @@ import databases.entry.DatabaseEntry;
 import databases.entry.TicketEntry;
 
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.HashMap;
 
 
-public class TicketsDatabase extends Database<TicketEntry> {
+public class TicketsDatabase extends Database<TicketEntry>{
     private static final CSVHandler<TicketEntry> handler;
     private static final TicketsDatabase instance;
     static {
@@ -20,6 +21,8 @@ public class TicketsDatabase extends Database<TicketEntry> {
     }
 
     private final HashMap<String, TicketEntry> db;
+
+    private final PropertyChangeSupport changes = new PropertyChangeSupport(this);
 
     public TicketsDatabase() {
         this.db = new HashMap<>();
@@ -51,8 +54,9 @@ public class TicketsDatabase extends Database<TicketEntry> {
 
     @Override
     void addListeners(PropertyChangeListener observer) {
-
+        this.changes.addPropertyChangeListener(observer);
     }
+
     @Override
     void save() {
         try {

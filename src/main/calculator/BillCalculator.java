@@ -1,6 +1,8 @@
 package calculator;
 
+import databases.CSVHandler;
 import databases.PersonsDatabase;
+import databases.TicketsDatabase;
 import databases.entry.PersonEntry;
 import databases.entry.PersonEntryComparator;
 
@@ -13,6 +15,16 @@ public class BillCalculator {
     private HashMap<String, ArrayList<Map.Entry<String, Double>>> debtsList;
 
     public BillCalculator() {
+    }
+
+    private static final BillCalculator instance;
+
+    static {
+        instance = new BillCalculator();
+    }
+
+    public static BillCalculator getInstance() {
+        return instance;
     }
 
     public HashMap<String, ArrayList<Map.Entry<String, Double>>> getDebtsList() {
