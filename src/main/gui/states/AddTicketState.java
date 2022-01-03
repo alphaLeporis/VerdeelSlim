@@ -85,7 +85,6 @@ public class AddTicketState extends State{
         goBack.addActionListener(observer);
     }
 
-    // Todo: deze code is heel brak :)
     private static String[] getAllUsers() {
         PersonsDatabase personDB = PersonsDatabase.getInstance();
         HashMap<String, PersonEntry>  persons = new PersonsController(personDB).getAllEntries();

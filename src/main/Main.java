@@ -53,7 +53,7 @@ public class Main
         ticketsController.createEntry(ticket2);
         ticketsController.createEntry(ticket3);
 
-        BillCalculator billCalculator = new BillCalculator();
+        BillCalculator billCalculator = BillCalculator.getInstance();
         billCalculator.calculateBill();
         HashMap<String, ArrayList<Map.Entry<String, Double>>> debts =billCalculator.getDebtsList();
         for(Map.Entry<String, ArrayList<Map.Entry<String, Double>>> entry: debts.entrySet()){
