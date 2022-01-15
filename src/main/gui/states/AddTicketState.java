@@ -25,8 +25,8 @@ public class AddTicketState extends State{
     private final JTextField prijsText = new JTextField();
     public static final JTextField prijsTextInput = new JTextField();
 
-    public static final Button addTicket = new Button(inter.currentLanguage.split());
-    public static final Button goBack = new Button(inter.currentLanguage.goBack());
+    public static Button addTicket;
+    public static Button goBack;
 
     public AddTicketState(Interface inter) {
         super(inter);
@@ -44,6 +44,9 @@ public class AddTicketState extends State{
 
     @Override
     void createUIElements() {
+        addTicket = new Button(inter.currentLanguage.split());
+        goBack = new Button(inter.currentLanguage.goBack());
+
         betaaldBox = new JComboBox<>(getAllUsers());
         betaaldBoxText.setText(inter.currentLanguage.paidBy());
         betaaldBoxText.setEditable(false);
