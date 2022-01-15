@@ -1,35 +1,41 @@
 package gui.states;
 
 import gui.Interface;
-import gui.Language;
-import gui.Nederlands;
+import gui.i18n.English;
+import gui.i18n.Language;
+import gui.i18n.Nederlands;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 
 abstract public class State extends JFrame {
     protected final Container pane;
     public static Interface inter;
     protected BufferedImage headerImage;
-    protected Language language;
 
     public State(Interface inter) {
         StartState.inter = inter;
         this.pane = inter.getPane();
-        this.language = new Nederlands();
     }
 
     public void init() {
+        emptyEverything();
         setLayout();
         if (headerImage != null) {
             addImage(headerImage);
         }
         createUIElements();
         initActionListener();
+    }
+
+    private void emptyEverything() {
+        pane.removeAll();
+        inter.revalidate();
     }
 
     private void addImage(BufferedImage img) {

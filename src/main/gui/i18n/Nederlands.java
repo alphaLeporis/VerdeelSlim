@@ -1,4 +1,4 @@
-package gui;
+package gui.i18n;
 
 public class Nederlands implements Language{
     @Override
@@ -41,6 +41,15 @@ public class Nederlands implements Language{
         return "Wat is je naam?";
     }
 
+    @Override
+    public String pays() {
+        return "%s moet %.2f€ van %s krijgen.";
+    }
+
+    @Override
+    public String receives() {
+        return "%s moet %.2f€ aan %s betalen.";
+    }
     @Override
     public String getsGives() {
         return " krijgt/geeft van/aan ";
@@ -94,5 +103,50 @@ public class Nederlands implements Language{
     @Override
     public String exit() {
         return "Sluit af";
+    }
+
+    @Override
+    public String yourSum() {
+        return "Jouw som: ";
+    }
+
+    @Override
+    public String correctSum() {
+        return "De correcte som: ";
+    }
+
+    @Override
+    public String missingSum() {
+        return "Er mist: ";
+    }
+
+    @Override
+    public String yourCorrectSum() {
+        return "De correcte en jouw som: ";
+    }
+
+    @Override
+    public String priceNotValidError() {
+        return "De ingevulde prijs is niet geldig!";
+    }
+
+    @Override
+    public String checkSumError() {
+        return "De totale som is niet correct!";
+    }
+
+    @Override
+    public String fillInPriceError() {
+        return "Vul een prijs in!";
+    }
+
+    @Override
+    public String currentLanguage() {
+        return "Nederlands";
+    }
+
+    @Override
+    public String changeLanguage() {
+        return "Verander taal in Nederlands";
     }
 }

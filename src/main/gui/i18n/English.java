@@ -1,6 +1,8 @@
-package gui;
+package gui.i18n;
 
-public class English implements Language{
+import gui.i18n.Language;
+
+public class English implements Language {
     @Override
     public String goBack() {
         return "Go back";
@@ -39,6 +41,16 @@ public class English implements Language{
     @Override
     public String userName() {
         return "What's your name?";
+    }
+
+    @Override
+    public String pays() {
+        return "%s receives %.2f€ from %s.";
+    }
+
+    @Override
+    public String receives() {
+        return "%s pays %.2f€ to %s.";
     }
 
     @Override
@@ -94,5 +106,50 @@ public class English implements Language{
     @Override
     public String exit() {
         return "Exit";
+    }
+
+    @Override
+    public String yourSum() {
+        return "Your sum: ";
+    }
+
+    @Override
+    public String correctSum() {
+        return "The correct sum: ";
+    }
+
+    @Override
+    public String missingSum() {
+        return "There misses: ";
+    }
+
+    @Override
+    public String yourCorrectSum() {
+        return "The correct and your sum: ";
+    }
+
+    @Override
+    public String priceNotValidError() {
+        return "Please check the input!";
+    }
+
+    @Override
+    public String checkSumError() {
+        return "Please check your sum!";
+    }
+
+    @Override
+    public String fillInPriceError() {
+        return "Please fill in a price!";
+    }
+
+    @Override
+    public String currentLanguage() {
+        return "English";
+    }
+
+    @Override
+    public String changeLanguage() {
+        return "Change language to English";
     }
 }

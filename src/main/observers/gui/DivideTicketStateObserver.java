@@ -37,15 +37,15 @@ public class DivideTicketStateObserver extends StateObserver{
                 }
             }
             System.out.println(sum);
-            DivideTicketState.yourSum.setText("Totaal prijs: " + sum);
+            DivideTicketState.yourSum.setText(State.inter.currentLanguage.totalPrice() + sum);
             if (sum != DivideTicketState.finalSum) {
-                DivideTicketState.yourSum.setText("Jouw som: " + sum +
-                        "\nDe correcte som: " + DivideTicketState.finalSum +
-                        "\nJe mist: " + abs(DivideTicketState.finalSum - sum));
+                DivideTicketState.yourSum.setText(State.inter.currentLanguage.yourSum() + sum +
+                        "\n"+State.inter.currentLanguage.correctSum() + DivideTicketState.finalSum +
+                        "\n"+State.inter.currentLanguage.missingSum() + abs(DivideTicketState.finalSum - sum));
 
                 DivideTicketState.yourSum.setBackground(Color.RED);
             } else {
-                DivideTicketState.yourSum.setText("De correcte en jouw som: " + sum);
+                DivideTicketState.yourSum.setText(State.inter.currentLanguage.yourCorrectSum() + sum);
                 DivideTicketState.yourSum.setBackground(null);
             }
         }
@@ -57,7 +57,7 @@ public class DivideTicketStateObserver extends StateObserver{
                     double d = Double.parseDouble(set.getValue().getText());
                     DivideTicketState.entry.setAmount(DivideTicketState.getUser(set.getKey()), d);
                 } catch (NumberFormatException e2) {
-                    JOptionPane.showMessageDialog(null, "Dit is geen geldige prijs!");
+                    JOptionPane.showMessageDialog(null, State.inter.currentLanguage.priceNotValidError());
                     try {
                         sleep(100);
                     } catch (InterruptedException ex) {
@@ -73,7 +73,7 @@ public class DivideTicketStateObserver extends StateObserver{
 
                 DivideTicketState.inter.changeState(new TicketState(DivideTicketState.inter));
             } else {
-                JOptionPane.showMessageDialog(null, "Oei kijk je som na!");
+                JOptionPane.showMessageDialog(null, State.inter.currentLanguage.checkSumError());
             }
 
         }

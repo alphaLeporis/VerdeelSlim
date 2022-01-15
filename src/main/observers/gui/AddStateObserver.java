@@ -27,7 +27,7 @@ public class AddStateObserver extends StateObserver{
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
-                JOptionPane.showMessageDialog(null, "Vul een prijs in!");
+                JOptionPane.showMessageDialog(null, AddTicketState.inter.currentLanguage.fillInPriceError());
             } else {
                 try {
                     double d = Double.parseDouble(AddTicketState.prijsTextInput.getText());
@@ -38,7 +38,7 @@ public class AddStateObserver extends StateObserver{
                                                                     d,
                                                                     AddTicketState.getUser((String) AddTicketState.betaaldBox.getSelectedItem()))));
                 } catch (NumberFormatException e2) {
-                    JOptionPane.showMessageDialog(null, "Dit is geen geldige prijs!");
+                    JOptionPane.showMessageDialog(null, AddTicketState.inter.currentLanguage.priceNotValidError());
                 }
             }
 

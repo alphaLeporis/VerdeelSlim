@@ -33,8 +33,8 @@ public class TicketState extends State {
 
     @Override
     void createUIElements() {
-        addTicket = new Button(super.language.addTicket());
-        goBack = new Button(super.language.goBack());
+        addTicket = new Button(inter.currentLanguage.addTicket());
+        goBack = new Button(inter.currentLanguage.goBack());
 
         for (Map.Entry<String, TicketEntry> set : allPersons.entrySet()) {
             pane.add(new ticketLayout(set.getKey(), set.getValue()).draw());

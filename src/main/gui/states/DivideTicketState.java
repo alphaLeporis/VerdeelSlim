@@ -49,11 +49,11 @@ public class DivideTicketState extends State {
         group.add(option1);
         group.add(option2);
 
-        addTicket = new Button(super.language.addTicket());
-        goBack = new Button(super.language.goBack());
-        checkSum = new Button(super.language.checkSum());
-        option1 = new JRadioButton(super.language.dividedUniformly());
-        option2 = new JRadioButton(super.language.dividedNonUniformly());
+        addTicket = new Button(inter.currentLanguage.addTicket());
+        goBack = new Button(inter.currentLanguage.goBack());
+        checkSum = new Button(inter.currentLanguage.checkSum());
+        option1 = new JRadioButton(inter.currentLanguage.dividedUniformly());
+        option2 = new JRadioButton(inter.currentLanguage.dividedNonUniformly());
         yourSum = new JTextArea();
 
         // Draw first buttons
@@ -71,7 +71,7 @@ public class DivideTicketState extends State {
             pane.add(text);
         }
         yourSum.setEditable(false);
-        yourSum.setText(super.language.totalPrice() + finalSum);
+        yourSum.setText(inter.currentLanguage.totalPrice() + finalSum);
 
         // Draw rest of buttons on pane
         pane.add(checkSum);

@@ -1,4 +1,4 @@
-package gui;
+package gui.i18n;
 
 public interface Language {
     //General
@@ -17,6 +17,8 @@ public interface Language {
 
 
     //Calculate
+    String pays();
+    String receives();
     String getsGives();
     String amount();
 
@@ -33,4 +35,18 @@ public interface Language {
     String calculate();
     String exit();
 
+    // Sum
+    String yourSum();
+    String correctSum();
+    String missingSum();
+    String yourCorrectSum();
+
+    // Errors
+    String priceNotValidError();
+    String checkSumError();
+    String fillInPriceError();
+
+    // Method
+    String currentLanguage();
+    String changeLanguage();
 }

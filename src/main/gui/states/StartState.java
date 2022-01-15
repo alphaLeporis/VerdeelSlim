@@ -12,6 +12,7 @@ public class StartState extends State {
     public static Button lookTicket;
     public static Button calculate;
     public static Button exit;
+    public static Button changeLanguage;
 
     public StartState(Interface inter) {
         super(inter);
@@ -33,21 +34,24 @@ public class StartState extends State {
         addTicket.addActionListener(observer);
         lookTicket.addActionListener(observer);
         calculate.addActionListener(observer);
+        changeLanguage.addActionListener(observer);
         exit.addActionListener(observer);
     }
 
     @Override
     void createUIElements() {
-        lookUsers = new Button(super.language.viewUsers());
-        addTicket = new Button(super.language.addTicket());
-        lookTicket = new Button(super.language.viewTickets());
-        calculate = new Button(super.language.calculate());
-        exit = new Button(super.language.exit());
+        lookUsers = new Button(inter.currentLanguage.viewUsers());
+        addTicket = new Button(inter.currentLanguage.addTicket());
+        lookTicket = new Button(inter.currentLanguage.viewTickets());
+        calculate = new Button(inter.currentLanguage.calculate());
+        changeLanguage = new Button(inter.nextlanguageInList().changeLanguage());
+        exit = new Button(inter.currentLanguage.exit());
 
         pane.add(lookUsers);
         pane.add(addTicket);
         pane.add(lookTicket);
         pane.add(calculate);
+        pane.add(changeLanguage);
         pane.add(exit);
     }
 }

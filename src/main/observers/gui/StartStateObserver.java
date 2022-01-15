@@ -23,6 +23,11 @@ public class StartStateObserver extends StateObserver{
             StartState.inter.changeState(new CalculateState(StartState.inter));
         }
 
+        if (e.getSource() == StartState.changeLanguage) {
+            StartState.inter.ChangeLanguageToNext();
+            StartState.inter.changeState(new StartState(StartState.inter));
+        }
+
         if (e.getSource() == StartState.exit) {
             System.exit(0);
         }

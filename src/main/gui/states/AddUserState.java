@@ -22,9 +22,9 @@ public class AddUserState extends State {
 
     @Override
     void createUIElements() {
-        TextField nameUserText = new TextField(super.language.userName());
-        addUser = new Button(super.language.addUser());
-        goBack = new Button(super.language.goBack());
+        TextField nameUserText = new TextField(inter.currentLanguage.userName());
+        addUser = new Button(inter.currentLanguage.addUser());
+        goBack = new Button(inter.currentLanguage.goBack());
         nameUser = new TextField();
 
         nameUserText.setEditable(false);
