@@ -10,7 +10,7 @@ public class PersonsDatabase extends Database<PersonEntry> {
         instance = new PersonsDatabase();
     }
 
-    public PersonsDatabase() {
+    private PersonsDatabase() {
         super();
     }
 

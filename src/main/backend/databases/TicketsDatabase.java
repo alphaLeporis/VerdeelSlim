@@ -14,7 +14,7 @@ public class TicketsDatabase extends Database<TicketEntry>{
         instance = new TicketsDatabase();
     }
 
-    public TicketsDatabase() {
+    private TicketsDatabase() {
         super();
         debtController = new DebtController();
     }
