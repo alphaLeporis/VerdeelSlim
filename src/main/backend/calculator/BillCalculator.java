@@ -12,7 +12,7 @@ public class BillCalculator {
 
     private HashMap<String, ArrayList<Map.Entry<String, Double>>> debtsList;
 
-    public BillCalculator() {
+    private BillCalculator() {
     }
 
     private static BillCalculator instance;
