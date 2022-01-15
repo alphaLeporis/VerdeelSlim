@@ -7,7 +7,7 @@ import observers.database.SaveDatabaseObserver;
 
 
 public class TicketsDatabase extends Database<TicketEntry>{
-    private static final TicketsDatabase instance;
+    private static TicketsDatabase instance;
     private final DebtController debtController;
 
     static {
@@ -21,6 +21,10 @@ public class TicketsDatabase extends Database<TicketEntry>{
 
     public static TicketsDatabase getInstance() {
         return instance;
+    }
+
+    public static void clearTicketsDatabase() {
+        instance = new TicketsDatabase();
     }
 
     @Override

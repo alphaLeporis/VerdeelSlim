@@ -4,7 +4,7 @@ import backend.entry.person.PersonEntry;
 import observers.database.SaveDatabaseObserver;
 
 public class PersonsDatabase extends Database<PersonEntry> {
-    private static final PersonsDatabase instance;
+    private static PersonsDatabase instance;
 
     static {
         instance = new PersonsDatabase();
@@ -16,6 +16,10 @@ public class PersonsDatabase extends Database<PersonEntry> {
 
     public static PersonsDatabase getInstance() {
         return instance;
+    }
+
+    public static void clearPersonsDatabase() {
+        instance = new PersonsDatabase();
     }
 
     @Override

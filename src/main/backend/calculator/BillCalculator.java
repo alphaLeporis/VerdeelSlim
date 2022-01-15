@@ -15,7 +15,7 @@ public class BillCalculator {
     public BillCalculator() {
     }
 
-    private static final BillCalculator instance;
+    private static BillCalculator instance;
 
     static {
         instance = new BillCalculator();
@@ -23,6 +23,10 @@ public class BillCalculator {
 
     public static BillCalculator getInstance() {
         return instance;
+    }
+
+    public static void clearBillCalculator() {
+        instance = new BillCalculator();
     }
 
     public HashMap<String, ArrayList<Map.Entry<String, Double>>> getDebtsList() {
