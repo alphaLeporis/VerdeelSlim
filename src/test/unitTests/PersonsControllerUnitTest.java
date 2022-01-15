@@ -22,7 +22,7 @@ public class PersonsControllerUnitTest {
     }
 
     @Test
-    public void t_creatEntry() throws Exception
+    public void t_creatEntry()
     {
         PersonsDatabase mock_db = Mockito.mock(PersonsDatabase.class);
         PersonEntry mock_person = Mockito.mock(PersonEntry.class);
@@ -34,7 +34,7 @@ public class PersonsControllerUnitTest {
     }
 
     @Test
-    public void t_removeEntry() throws Exception
+    public void t_removeEntry()
     {
         PersonsDatabase mock_db = Mockito.mock(PersonsDatabase.class);
         PersonEntry mock_person = Mockito.mock(PersonEntry.class);
@@ -54,7 +54,7 @@ public class PersonsControllerUnitTest {
     }
 
     @Test
-    public void t_getAllEntries() throws Exception
+    public void t_getAllEntries()
     {
         PersonsDatabase personDatabase = PersonsDatabase.getInstance();
         PersonEntry person1 = new PersonEntry("Bob");

@@ -31,10 +31,8 @@ public class Main
 
     public void run()
     {
-        Database personDatabase = PersonsDatabase.getInstance();
-        PersonsController personsController = new PersonsController((PersonsDatabase) personDatabase);
-        Database ticketDatabase = TicketsDatabase.getInstance();
-        TicketsController ticketsController = new TicketsController((TicketsDatabase) ticketDatabase);
+        PersonsController personsController = new PersonsController(PersonsDatabase.getInstance());
+        TicketsController ticketsController = new TicketsController(TicketsDatabase.getInstance());
         TicketFactory ticketFactory = new TicketFactory();
 
         PersonEntry person1 = new PersonEntry("Bob");

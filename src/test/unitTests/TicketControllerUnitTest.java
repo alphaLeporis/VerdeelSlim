@@ -24,7 +24,7 @@ public class TicketControllerUnitTest {
     }
 
     @Test
-    public void t_creatEntry() throws Exception
+    public void t_creatEntry()
     {
         TicketsDatabase mock_db = Mockito.mock(TicketsDatabase.class);
         TicketEntry mock_ticket = Mockito.mock(TicketEntry.class);
@@ -36,7 +36,7 @@ public class TicketControllerUnitTest {
     }
 
     @Test
-    public void t_removeEntry() throws Exception
+    public void t_removeEntry()
     {
         TicketsDatabase mock_db = Mockito.mock(TicketsDatabase.class);
         TicketEntry mock_ticket = Mockito.mock(TicketEntry.class);
@@ -56,7 +56,7 @@ public class TicketControllerUnitTest {
     }
 
     @Test
-    public void t_getAllEntries() throws Exception
+    public void t_getAllEntries()
     {
         PersonsDatabase personDatabase = PersonsDatabase.getInstance();
         PersonsController personsController = new PersonsController(personDatabase);
