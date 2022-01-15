@@ -150,4 +150,9 @@ public class French implements Language {
     public String changeLanguage() {
         return "Changer la langue en français";
     }
+
+    @Override
+    public Boolean isRTL() {
+        return false;
+    }
 }

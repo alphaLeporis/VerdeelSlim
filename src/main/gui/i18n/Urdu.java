@@ -1,158 +1,158 @@
 package gui.i18n;
 
-public class Russian implements Language {
+public class Urdu implements Language {
     @Override
     public String goBack() {
-        return "Вернуться назад";
+        return "واپس جاو";
     }
 
     @Override
     public String split() {
-        return "Сплит";
+        return "تقسیم";
     }
 
     @Override
     public String paidBy() {
-        return "Кто заплатил?";
+        return "کس نے ادا کیا؟";
     }
 
     @Override
     public String ticketName() {
-        return "Как называется билет?";
+        return "ٹکٹ کا نام کیا ہے؟";
     }
 
     @Override
     public String ticketType() {
-        return "Какой тип билета?";
+        return "یہ کس قسم کا ٹکٹ ہے؟";
     }
 
     @Override
     public String ticketPrice() {
-        return "Какова цена билета?";
+        return "ٹکٹ کی قیمت کیا ہے؟";
     }
 
     @Override
     public String addUser() {
-        return "Добавить пользователя";
+        return "صارف شامل کریں۔";
     }
 
     @Override
     public String userName() {
-        return "Как тебя зовут?";
+        return "آپ کا نام کیا ہے؟";
     }
 
     @Override
     public String pays() {
-        return "%s получает %.2f€ от %s.";
+        return "%s کو %s سے %.2f€ موصول ہوتا ہے۔";
     }
 
     @Override
     public String receives() {
-        return "%s платит %.2f€ в %s.";
+        return "%s %s کو %.2f€ ادا کرتا ہے۔";
     }
 
     @Override
     public String getsGives() {
-        return " получает/даёт ";
+        return " ملتا/دیتا ہے۔ ";
     }
 
     @Override
     public String amount() {
-        return " сумма: ";
+        return " رقم: ";
     }
 
     @Override
     public String addTicket() {
-        return "Добавить билет";
+        return "ٹکٹ شامل کریں۔";
     }
 
     @Override
     public String checkSum() {
-        return "Контрольная сумма";
+        return "رقم چیک کریں۔";
     }
 
     @Override
     public String dividedUniformly() {
-        return "Разделены равномерно";
+        return "یکساں طور پر تقسیم";
     }
 
     @Override
     public String dividedNonUniformly() {
-        return "Разделены неравномерно";
+        return "غیر یکساں طور پر تقسیم";
     }
 
     @Override
     public String totalPrice() {
-        return "Общая цена: ";
+        return "کل قیمت: ";
     }
 
     @Override
     public String viewUsers() {
-        return "Просмотр пользователей";
+        return "صارفین کو دیکھیں";
     }
 
     @Override
     public String viewTickets() {
-        return "Посмотреть текущие билеты";
+        return "موجودہ ٹکٹ دیکھیں";
     }
 
     @Override
     public String calculate() {
-        return "Рассчитать";
+        return "حساب لگانا";
     }
 
     @Override
     public String exit() {
-        return "Выход";
+        return "باہر نکلیں";
     }
 
     @Override
     public String yourSum() {
-        return "Ваша сумма: ";
+        return "آپ کا مجموعہ: ";
     }
 
     @Override
     public String correctSum() {
-        return "Правильная сумма: ";
+        return "درست رقم: ";
     }
 
     @Override
     public String missingSum() {
-        return "Есть промахи: ";
+        return "وہاں کمی ہے: ";
     }
 
     @Override
     public String yourCorrectSum() {
-        return "Правильная и ваша сумма: ";
+        return "صحیح اور آپ کا مجموعہ: ";
     }
 
     @Override
     public String priceNotValidError() {
-        return "Пожалуйста, проверьте входные данные!";
+        return "براہ کرم ان پٹ کو چیک کریں!";
     }
 
     @Override
     public String checkSumError() {
-        return "Пожалуйста, проверьте свою сумму!";
+        return "براہ کرم اپنی رقم چیک کریں!";
     }
 
     @Override
     public String fillInPriceError() {
-        return "Пожалуйста, укажите цену!";
+        return "براہ کرم قیمت بھریں!";
     }
 
     @Override
     public String currentLanguage() {
-        return "Русский";
+        return "Urdu";
     }
 
     @Override
     public String changeLanguage() {
-        return "Изменить язык на русский";
+        return "زبان کو اردو میں تبدیل کریں۔";
     }
 
     @Override
     public Boolean isRTL() {
-        return false;
+        return true;
     }
 }

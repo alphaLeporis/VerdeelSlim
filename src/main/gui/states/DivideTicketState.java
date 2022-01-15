@@ -62,22 +62,35 @@ public class DivideTicketState extends State {
 
         // Draw all persons
         for (Map.Entry<String, PersonEntry> set : allPersons.entrySet()) {
-            pane.add(new userLayout(set.getKey()).draw());
             JTextField text = new JTextField(String.valueOf(entry.getTicketSplitMap().getName(set.getKey())));
             finalSum = finalSum + entry.getTicketSplitMap().getName(set.getKey());
             text.setEditable(!Even);
             text.addActionListener(observer);
             textEntries.put(set.getKey(), text);
-            pane.add(text);
+
+            if (inter.currentLanguage.isRTL()) {
+                pane.add(text);
+                pane.add(new userLayout(set.getKey()).draw());
+            } else {
+                pane.add(new userLayout(set.getKey()).draw());
+                pane.add(text);
+            }
         }
         yourSum.setEditable(false);
         yourSum.setText(inter.currentLanguage.totalPrice() + finalSum);
 
         // Draw rest of buttons on pane
-        pane.add(checkSum);
-        pane.add(yourSum);
-        pane.add(goBack);
-        pane.add(addTicket);
+        if (inter.currentLanguage.isRTL()) {
+            pane.add(yourSum);
+            pane.add(checkSum);
+            pane.add(addTicket);
+            pane.add(goBack);
+        } else {
+            pane.add(checkSum);
+            pane.add(yourSum);
+            pane.add(goBack);
+            pane.add(addTicket);
+        }
     }
 
     @Override

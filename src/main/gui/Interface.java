@@ -37,6 +37,7 @@ public class Interface extends JFrame {
         installedLanguages.add(new English());
         installedLanguages.add(new French());
         installedLanguages.add(new Russian());
+        installedLanguages.add(new Urdu());
     }
 
     public Language nextlanguageInList() {

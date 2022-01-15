@@ -149,4 +149,9 @@ public class Nederlands implements Language{
     public String changeLanguage() {
         return "Verander taal in Nederlands";
     }
+
+    @Override
+    public Boolean isRTL() {
+        return false;
+    }
 }

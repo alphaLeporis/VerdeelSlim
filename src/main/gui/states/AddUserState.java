@@ -28,11 +28,17 @@ public class AddUserState extends State {
         nameUser = new TextField();
 
         nameUserText.setEditable(false);
-
-        pane.add(nameUserText);
-        pane.add(nameUser);
-        pane.add(goBack);
-        pane.add(addUser);
+        if (inter.currentLanguage.isRTL()) {
+            pane.add(nameUser);
+            pane.add(nameUserText);
+            pane.add(addUser);
+            pane.add(goBack);
+        } else {
+            pane.add(nameUserText);
+            pane.add(nameUser);
+            pane.add(goBack);
+            pane.add(addUser);
+        }
     }
 
     @Override

@@ -39,9 +39,14 @@ public class TicketState extends State {
         for (Map.Entry<String, TicketEntry> set : allPersons.entrySet()) {
             pane.add(new ticketLayout(set.getKey(), set.getValue()).draw());
         }
+        if (inter.currentLanguage.isRTL()) {
+            pane.add(addTicket);
+            pane.add(goBack);
+        } else {
+            pane.add(goBack);
+            pane.add(addTicket);
+        }
 
-        pane.add(goBack);
-        pane.add(addTicket);
 
     }
 

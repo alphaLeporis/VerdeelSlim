@@ -49,4 +49,6 @@ public interface Language {
     // Method
     String currentLanguage();
     String changeLanguage();
+
+    Boolean isRTL();
 }

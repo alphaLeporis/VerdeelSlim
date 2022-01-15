@@ -59,16 +59,29 @@ public class AddTicketState extends State{
 
         ticketBox.setEditable(true);
 
-        pane.add(betaaldBoxText);
-        pane.add(betaaldBox);
-        pane.add(naamText);
-        pane.add(naamTextInput);
-        pane.add(ticketBoxText);
-        pane.add(ticketBox);
-        pane.add(prijsText);
-        pane.add(prijsTextInput);
-        pane.add(goBack);
-        pane.add(addTicket);
+        if (inter.currentLanguage.isRTL()) {
+            pane.add(betaaldBox);
+            pane.add(betaaldBoxText);
+            pane.add(naamTextInput);
+            pane.add(naamText);
+            pane.add(ticketBox);
+            pane.add(ticketBoxText);
+            pane.add(prijsTextInput);
+            pane.add(prijsText);
+            pane.add(addTicket);
+            pane.add(goBack);
+        } else {
+            pane.add(betaaldBoxText);
+            pane.add(betaaldBox);
+            pane.add(naamText);
+            pane.add(naamTextInput);
+            pane.add(ticketBoxText);
+            pane.add(ticketBox);
+            pane.add(prijsText);
+            pane.add(prijsTextInput);
+            pane.add(goBack);
+            pane.add(addTicket);
+        }
 
         if (entry != null) {
             naamTextInput.setText(entry.getName());

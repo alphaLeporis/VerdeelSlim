@@ -30,7 +30,7 @@ public class English implements Language {
 
     @Override
     public String ticketPrice() {
-        return "What's the ticket's price?";
+        return "What's the tickets price?";
     }
 
     @Override
@@ -151,5 +151,10 @@ public class English implements Language {
     @Override
     public String changeLanguage() {
         return "Change language to English";
+    }
+
+    @Override
+    public Boolean isRTL() {
+        return false;
     }
 }
