@@ -1,6 +1,8 @@
 package gui.states;
 
 import gui.Interface;
+import gui.Language;
+import gui.Nederlands;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,10 +15,12 @@ abstract public class State extends JFrame {
     protected final Container pane;
     public static Interface inter;
     protected BufferedImage headerImage;
+    protected Language language;
 
     public State(Interface inter) {
         StartState.inter = inter;
         this.pane = inter.getPane();
+        this.language = new Nederlands();
     }
 
     public void init() {

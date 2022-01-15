@@ -38,11 +38,11 @@ public class StartState extends State {
 
     @Override
     void createUIElements() {
-        lookUsers = new Button("Bekijk gebruikers ");
-        addTicket = new Button("Voeg een ticket toe");
-        lookTicket = new Button("Bekijk hudige tickets");
-        calculate = new Button("Bereken");
-        exit = new Button("Sluit af");
+        lookUsers = new Button(super.language.viewUsers());
+        addTicket = new Button(super.language.addTicket());
+        lookTicket = new Button(super.language.viewTickets());
+        calculate = new Button(super.language.calculate());
+        exit = new Button(super.language.exit());
 
         pane.add(lookUsers);
         pane.add(addTicket);

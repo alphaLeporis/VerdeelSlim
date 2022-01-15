@@ -25,11 +25,11 @@ public class CalculateState extends State {
 
     @Override
     void createUIElements() {
-        goBack = new Button("Keer terug");
+        goBack = new Button(super.language.goBack());
 
         for(Map.Entry<String, ArrayList<Map.Entry<String, Double>>> entry: BillCalculator.getInstance().getDebtsList().entrySet()){
             for(Map.Entry<String, Double> set: entry.getValue()){
-                System.out.println(entry.getKey() + " gets/gives  to  " + set.getKey() + " amount: " + set.getValue());
+                System.out.println(entry.getKey() + super.language.getsGives() + set.getKey() + super.language.amount() + set.getValue());
                 pane.add(new debtLayout(entry.getKey(), set.getKey(), set.getValue()).draw());
             }
         }

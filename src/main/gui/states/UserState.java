@@ -39,8 +39,8 @@ public class UserState extends State {
 
     @Override
     void createUIElements() {
-        addUser = new Button("Voeg gebruiker toe");
-        goBack = new Button("Keer terug");
+        addUser = new Button(super.language.addUser());
+        goBack = new Button(super.language.goBack());
 
         for (Map.Entry<String, PersonEntry> set : allPersons.entrySet()) {
             pane.add(new userLayout(set.getKey()).draw());

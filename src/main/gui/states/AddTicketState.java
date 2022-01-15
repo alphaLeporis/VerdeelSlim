@@ -45,15 +45,15 @@ public class AddTicketState extends State{
     @Override
     void createUIElements() {
         betaaldBox = new JComboBox<>(getAllUsers());
-        betaaldBoxText.setText("Wie heeft betaald?");
+        betaaldBoxText.setText(super.language.paidBy());
         betaaldBoxText.setEditable(false);
-        naamText.setText("Wat is de naam van het ticket?");
+        naamText.setText(super.language.ticketName());
         naamText.setEditable(false);
         naamTextInput.setEditable(true);
 
-        ticketBoxText.setText("Wat voor een ticket was het?");
+        ticketBoxText.setText(super.language.ticketType());
         ticketBoxText.setEditable(false);
-        prijsText.setText("Hoeveel kostte dit ticket?");
+        prijsText.setText(super.language.ticketPrice());
         prijsText.setEditable(false);
         prijsTextInput.setEditable(true);
 
