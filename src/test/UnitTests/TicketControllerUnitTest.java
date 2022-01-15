@@ -1,12 +1,12 @@
-package UnitTests;
+package unitTests;
 
-import databases.PersonsDatabase;
-import databases.TicketsDatabase;
-import databases.controllers.PersonsController;
-import databases.controllers.TicketsController;
-import databases.entry.PersonEntry;
-import databases.entry.TicketEntry;
-import databases.entry.tickets.TicketFactory;
+import backend.databases.PersonsDatabase;
+import backend.databases.TicketsDatabase;
+import backend.databases.controllers.PersonsController;
+import backend.databases.controllers.TicketsController;
+import backend.entry.person.PersonEntry;
+import backend.entry.tickets.TicketEntry;
+import backend.entry.tickets.TicketFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +24,7 @@ public class TicketControllerUnitTest {
     }
 
     @Test
-    public void t_creatEntry() throws Exception
+    public void t_creatEntry()
     {
         TicketsDatabase mock_db = Mockito.mock(TicketsDatabase.class);
         TicketEntry mock_ticket = Mockito.mock(TicketEntry.class);
@@ -36,7 +36,7 @@ public class TicketControllerUnitTest {
     }
 
     @Test
-    public void t_removeEntry() throws Exception
+    public void t_removeEntry()
     {
         TicketsDatabase mock_db = Mockito.mock(TicketsDatabase.class);
         TicketEntry mock_ticket = Mockito.mock(TicketEntry.class);
@@ -56,7 +56,7 @@ public class TicketControllerUnitTest {
     }
 
     @Test
-    public void t_getAllEntries() throws Exception
+    public void t_getAllEntries()
     {
         PersonsDatabase personDatabase = PersonsDatabase.getInstance();
         PersonsController personsController = new PersonsController(personDatabase);
