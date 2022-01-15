@@ -19,8 +19,8 @@ public class AddStateObserver extends StateObserver{
         }
 
         if (e.getSource() == AddTicketState.addTicket) {
-            System.out.println(AddTicketState.ticketBox.getSelectedItem());
-            System.out.println(AddTicketState.prijsTextInput.getText().length());
+            //System.out.println(AddTicketState.ticketBox.getSelectedItem());
+            //System.out.println(AddTicketState.prijsTextInput.getText().length());
             if (AddTicketState.prijsTextInput.getText().length() == 0) {
                 try {
                     sleep(100);

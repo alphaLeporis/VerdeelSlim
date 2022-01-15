@@ -29,7 +29,7 @@ public class CalculateState extends State {
 
         for(Map.Entry<String, ArrayList<Map.Entry<String, Double>>> entry: BillCalculator.getInstance().getDebtsList().entrySet()){
             for(Map.Entry<String, Double> set: entry.getValue()){
-                System.out.println(entry.getKey() + inter.currentLanguage.getsGives() + set.getKey() + inter.currentLanguage.amount() + set.getValue());
+                //System.out.println(entry.getKey() + inter.currentLanguage.getsGives() + set.getKey() + inter.currentLanguage.amount() + set.getValue());
                 pane.add(new debtLayout(inter, entry.getKey(), set.getKey(), set.getValue()).draw());
             }
         }

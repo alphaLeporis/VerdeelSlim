@@ -36,7 +36,6 @@ public class DivideTicketStateObserver extends StateObserver{
                     return;
                 }
             }
-            System.out.println(sum);
             DivideTicketState.yourSum.setText(State.inter.currentLanguage.totalPrice() + sum);
             if (sum != DivideTicketState.finalSum) {
                 DivideTicketState.yourSum.setText(State.inter.currentLanguage.yourSum() + sum +

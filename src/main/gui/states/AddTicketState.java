@@ -72,7 +72,7 @@ public class AddTicketState extends State{
 
         if (entry != null) {
             naamTextInput.setText(entry.getName());
-            System.out.println(entry.getPaidBy().getName());
+            //System.out.println(entry.getPaidBy().getName());
             betaaldBox.setSelectedItem(entry.getPaidBy().getName());
             ticketBox.setSelectedItem(entry.getTicketType());
             prijsTextInput.setText(String.valueOf(entry.getPrice()));
@@ -89,7 +89,7 @@ public class AddTicketState extends State{
         PersonsDatabase personDB = PersonsDatabase.getInstance();
         HashMap<String, PersonEntry>  persons = new PersonsController(personDB).getAllEntries();
         List<String> list = new ArrayList<>(persons.keySet());
-        System.out.println(list);
+        //System.out.println(list);
         String[] sa = {};
         sa = list.toArray(sa);
         return sa;

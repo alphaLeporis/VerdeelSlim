@@ -54,10 +54,10 @@ public class Main
         BillCalculator billCalculator = BillCalculator.getInstance();
         billCalculator.calculateBill();
         HashMap<String, ArrayList<Map.Entry<String, Double>>> debts =billCalculator.getDebtsList();
-        for(Map.Entry<String, ArrayList<Map.Entry<String, Double>>> entry: debts.entrySet()){
-            for(Map.Entry<String, Double> set: entry.getValue()){
-                System.out.println(entry.getKey() + " gets/gives  to  " + set.getKey() + " amount: " + set.getValue());
-            }
-        }
+//        for(Map.Entry<String, ArrayList<Map.Entry<String, Double>>> entry: debts.entrySet()){
+//            for(Map.Entry<String, Double> set: entry.getValue()){
+//                //System.out.println(entry.getKey() + " gets/gives  to  " + set.getKey() + " amount: " + set.getValue());
+//            }
+//        }
     }
 }

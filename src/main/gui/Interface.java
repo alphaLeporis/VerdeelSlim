@@ -47,6 +47,5 @@ public class Interface extends JFrame {
         installedLanguages.add(currentLanguage);
         currentLanguage = installedLanguages.get(0);
         installedLanguages.remove(0);
-        System.out.println(currentLanguage);
     }
 }
