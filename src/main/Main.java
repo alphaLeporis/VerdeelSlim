@@ -1,5 +1,4 @@
 import backend.calculator.BillCalculator;
-import backend.databases.Database;
 import backend.databases.PersonsDatabase;
 import backend.databases.TicketsDatabase;
 import backend.databases.controllers.PersonsController;
@@ -8,10 +7,6 @@ import backend.entry.person.PersonEntry;
 import backend.entry.tickets.TicketEntry;
 import backend.entry.tickets.TicketFactory;
 import gui.Display;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Main
 {
@@ -53,11 +48,5 @@ public class Main
 
         BillCalculator billCalculator = BillCalculator.getInstance();
         billCalculator.calculateBill();
-        HashMap<String, ArrayList<Map.Entry<String, Double>>> debts =billCalculator.getDebtsList();
-//        for(Map.Entry<String, ArrayList<Map.Entry<String, Double>>> entry: debts.entrySet()){
-//            for(Map.Entry<String, Double> set: entry.getValue()){
-//                //System.out.println(entry.getKey() + " gets/gives  to  " + set.getKey() + " amount: " + set.getValue());
-//            }
-//        }
     }
 }

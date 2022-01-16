@@ -1,4 +1,4 @@
-package unitTests;
+package UnitTests;
 
 import backend.databases.PersonsDatabase;
 import backend.databases.controllers.PersonsController;
@@ -10,8 +10,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-
-import static org.junit.Assert.assertSame;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(PersonsController.class)

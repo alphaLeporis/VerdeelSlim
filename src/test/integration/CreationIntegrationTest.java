@@ -8,13 +8,8 @@ import backend.databases.controllers.TicketsController;
 import backend.entry.person.PersonEntry;
 import backend.entry.tickets.TicketEntry;
 import backend.entry.tickets.TicketFactory;
-import backend.exception.PersonHasDebtException;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
 
 public class CreationIntegrationTest {
     PersonsController personsController;

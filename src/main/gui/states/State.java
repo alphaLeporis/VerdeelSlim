@@ -1,16 +1,12 @@
 package gui.states;
 
 import gui.Interface;
-import gui.i18n.English;
-import gui.i18n.Language;
-import gui.i18n.Nederlands;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Objects;
 
 abstract public class State extends JFrame {

@@ -1,4 +1,4 @@
-package unitTests;
+package UnitTests;
 
 import backend.databases.PersonsDatabase;
 import backend.databases.TicketsDatabase;
