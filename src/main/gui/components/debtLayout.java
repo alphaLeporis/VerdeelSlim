@@ -27,9 +27,9 @@ public class debtLayout {
             }
         } else {
             if (inter.currentLanguage.isRTL()) {
-                return new JLabel(String.format(inter.currentLanguage.receives(), p1,p2, Double.toString(Math.abs(price))));
+                return new JLabel(String.format(inter.currentLanguage.pays(), p1,p2, Double.toString(Math.abs(price))));
             } else {
-                return new JLabel(String.format(inter.currentLanguage.receives(), p1,Math.abs(price),p2));
+                return new JLabel(String.format(inter.currentLanguage.pays(), p1,Math.abs(price),p2));
             }
         }
     }
