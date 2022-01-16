@@ -43,17 +43,17 @@ public class Urdu implements Language {
 
     @Override
     public String pays() {
-        return "%s کو %s سے %.2f€ موصول ہوتا ہے۔";
+        return "%s کو %s سے%s€ موصول ہوتا ہے۔";
     }
 
     @Override
     public String receives() {
-        return "%s %s کو %.2f€ ادا کرتا ہے۔";
+        return "%s %s کو %s€ ادا کرتا ہے۔";
     }
 
     @Override
     public String getsGives() {
-        return " ملتا/دیتا ہے۔ ";
+        return "ملتا/دیتا ہے۔ ";
     }
 
     @Override

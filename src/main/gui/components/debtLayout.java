@@ -20,9 +20,17 @@ public class debtLayout {
 
     public Component draw() {
         if (price > 0) {
-            return new JLabel(String.format(inter.currentLanguage.receives(), p1,price,p2));
+            if (inter.currentLanguage.isRTL()) {
+                return new JLabel(String.format(inter.currentLanguage.receives(), p1,p2,Double.toString(price)));
+            } else {
+                return new JLabel(String.format(inter.currentLanguage.receives(), p1,price,p2));
+            }
         } else {
-            return new JLabel(String.format(inter.currentLanguage.pays(), p1,Math.abs(price),p2));
+            if (inter.currentLanguage.isRTL()) {
+                return new JLabel(String.format(inter.currentLanguage.receives(), p1,p2, Double.toString(Math.abs(price))));
+            } else {
+                return new JLabel(String.format(inter.currentLanguage.receives(), p1,Math.abs(price),p2));
+            }
         }
     }
 }
