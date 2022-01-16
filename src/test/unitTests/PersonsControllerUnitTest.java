@@ -11,6 +11,8 @@ import org.mockito.Mockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import static org.junit.Assert.assertSame;
+
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(PersonsController.class)
 public class PersonsControllerUnitTest {
